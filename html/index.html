@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css">
+    <title>Inicio | Memorión</title>
+</head>
+
+<body>
+    <div id="inicio">
+        <table id="config">
+            <tr>
+                <th colspan="2" id="conf">Configuración</th>
+            </tr>
+            <tr>
+                <th>Nombre:</th>
+                <td><input type="text" id="nombre"></td>
+            </tr>
+            <tr>
+                <th>Modo de juego:</th>
+                <td>
+                    <select id="modo">
+                        <option value="normal">Normal</option>
+                        <option value="flash">Flash</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Nivel de juego:</th>
+                <td>
+                    <select id="nivel">
+                        <option value="4">Tablero 4x4</option>
+                        <option value="5">Tablero 5x6</option>
+                        <option value="6">Tablero 6x6</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Tema:</th>
+                <td>
+                    <select id="tema">
+                        <option value="banderas">Banderas</option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value="aleatorio">Aleatorio</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Temporizador:</th>
+                <td>
+                    <select id="temp">
+                        <option value="true">Activado</option>
+                        <option value="false">Desactivado</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">
+
+                    <button id="aceptar">Aceptar</button>
+
+                </th>
+            </tr>
+        </table>
+    </div>
+
+    <div id="juego">
+        
+    <header>
+        <table id="header">
+            <tr>
+                <td><h1>Jugador 1</h1></td>
+                <td><h1 id="intent">Intentos:</h1></td>
+                <td>
+                    <table id="crono">
+                    <tr>
+                        <td class="reloj" id="horas">00</td>
+                        <td class="reloj" id="minutos">:00</td>
+                        <td class="reloj" id="segundos">:00</td>
+                        <td class="reloj" id="centesimas">:00</td>
+                    </tr>
+                </table>
+            </td>
+            </tr>
+        </table>
+    </header>
+
+        <div id="tablero">
+
+        </div>
+    </div>
+
+    <script async src="/js/main.js"></script>
+</body>
+
+</html>

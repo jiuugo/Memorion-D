@@ -36,7 +36,7 @@ select, input{
     display: none;
 }
 
-#info{
+header{
     color: white;
     font-size: 17px;
     margin: 0 auto;

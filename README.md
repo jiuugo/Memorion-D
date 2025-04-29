@@ -1,6 +1,6 @@
 # Memorion-D
 
-## Sesion 1
+## Sesion  1 - Estructura visal de configuracion y tablero
 
 **Resumen:**
 Hemos creado en un html el formulario de la configuracion y la pantalla del juego con (Tablero base, cronometro, contador)

@@ -1,11 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <title>Inicio | Memorión</title>
 </head>
+
 <body>
-    
+    <table>
+        <tr>
+            <th colspan="2" id="conf">Configuración</th>
+        </tr>
+        <tr>
+            <th>Nombre:</th>
+            <td><input type="text" id="nombre"></td>
+        </tr>
+        <tr>
+            <th>Modo de juego:</th>
+            <td>
+                <select id="modo">
+                    <option value="normal">Normal</option>
+                    <option value="flash">Flash</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>Nivel de juego:</th>
+            <td>
+                <select id="nivel">
+                    <option value="4">Tablero 4x4</option>
+                    <option value="5">Tablero 5x6</option>
+                    <option value="6">Tablero 6x6</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>Tema:</th>
+            <td>
+                <select id="tema">
+                    <option value="banderas">Banderas</option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value="aleatorio">Aleatorio</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>Temporizador:</th>
+            <td>
+                <select id="temp">
+                    <option value="true">Activado</option>
+                    <option value="false">Desactivado</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2">
+                <a href="tablero.html">
+                    <button id="aceptar">Aceptar</button>
+                </a>
+            </th>
+        </tr>
+    </table>
 </body>
+
 </html>

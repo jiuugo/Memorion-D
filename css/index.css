@@ -1,0 +1,33 @@
+body{
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-image: url("/img/tablero.jpg");
+}
+table{
+    color: white;
+    font-size: 17px;
+    width: 20em;
+    margin: 10em auto;
+    border: solid white 3px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    padding: 1em;
+}
+td,th{
+    padding: 10px;
+}
+td{
+    width: 10px;
+    text-align: right;
+}
+th{
+    text-align: left;
+}
+
+#conf{
+    text-align: center;
+    font-size: 25px;
+}
+select, input{
+    width: 100px;
+}

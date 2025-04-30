@@ -33,11 +33,12 @@ aceptar.addEventListener("click",() => {
         tema.value = temas[numRnd].value;
     }
 
-    alert(tema.value);
 
     actIntentos();
     poneNombre();
     poneTema();
+
+    colocaImagenes();
 
     inicio.style.display = "none";
     juego.style.display = "block";
@@ -62,11 +63,6 @@ nivel.addEventListener("click",() => {
     }
 })
 
-
-
-
-
-
 function actIntentos(){
     intent.textContent = "Intentos: " +  intentos;
 }
@@ -77,4 +73,33 @@ function poneNombre(){
 
 function poneTema(){
     hTema.textContent = "Tema: " +  tema.value;
+}
+
+let nFilas;
+let nColumnas;
+
+const persFilas = document.getElementById
+const persFilas = document.getElementById
+
+
+function colocaImagenes(){
+    switch (nivel.value){
+        case "facil":
+            nFilas = 4;
+            nColumnas = 4;
+        break;
+        case "medio":
+            nFilas = 5;
+            nColumnas = 6;
+        break;
+        case "dificil":
+            nFilas = 6;
+            nColumnas = 6;
+        break;
+        case "personalizado":
+
+        break;
+    }
+
+
 }

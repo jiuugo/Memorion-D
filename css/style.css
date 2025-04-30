@@ -13,22 +13,22 @@ body{
     backdrop-filter: blur(10px);
     padding: 1em;
 }
-td,th{
+#config td,th{
     padding: 10px;
 }
-td{
+#config td{
     width: 10px;
     text-align: right;
 }
-th{
+#config th{
     text-align: left;
 }
 
-#conf{
+#tituloConf{
     text-align: center;
     font-size: 25px;
 }
-select, input{
+#config select, #config input{
     width: 100px;
 }
 
@@ -38,10 +38,10 @@ select, input{
 
 header{
     color: white;
-    font-size: 17px;
+    font-size: 14px;
     margin: 0 auto;
     border: solid white 3px;
-    border-radius: 15px;
+    border-radius: 10px;
     backdrop-filter: blur(10px);
 }
 
@@ -52,4 +52,28 @@ header{
     border-radius: 10px;
     height: 600px;
     box-shadow: 4px 8px 10px black;
+}
+
+header{
+    width: 90%;
+}
+
+#info{
+    margin: 0 auto;
+}
+
+#info td{
+    margin: 0;
+    padding: 1em;
+    width: 30%;
+}
+
+#crono{
+    font-size: 23px;
+    width: 120px;
+}
+
+#crono td{
+    margin: 0;
+    padding: 0;
 }

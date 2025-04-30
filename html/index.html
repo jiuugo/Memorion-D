@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Inicio | Memorión</title>
 </head>
 
@@ -12,7 +12,7 @@
     <div id="inicio">
         <table id="config">
             <tr>
-                <th colspan="2" id="conf">Configuración</th>
+                <th colspan="2" id="tituloConf">Configuración</th>
             </tr>
             <tr>
                 <th>Nombre:</th>
@@ -61,7 +61,7 @@
             <tr>
                 <th colspan="2">
 
-                    <button id="aceptar">Aceptar</button>
+                    <button id="btnJugar">Jugar</button>
 
                 </th>
             </tr>
@@ -71,12 +71,15 @@
     <div id="juego">
         
     <header>
-        <table id="header">
+        <table id="info">
             <tr>
-                <td><h1>Jugador 1</h1></td>
+                <td><h1 id="hNombre">Jugador: </h1></td>
                 <td><h1 id="intent">Intentos:</h1></td>
                 <td>
                     <table id="crono">
+                        <tr>
+                            <th colspan="4">Tiempo</th>
+                        </tr>
                     <tr>
                         <td class="reloj" id="horas">00</td>
                         <td class="reloj" id="minutos">:00</td>

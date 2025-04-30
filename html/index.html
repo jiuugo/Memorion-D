@@ -22,7 +22,7 @@
                 <th>Modo de juego:</th>
                 <td>
                     <select id="modo">
-                        <option value="normal">Normal</option>
+                        <option selected default value="normal">Normal</option>
                         <option value="flash">Flash</option>
                     </select>
                 </td>
@@ -31,20 +31,29 @@
                 <th>Nivel de juego:</th>
                 <td>
                     <select id="nivel">
-                        <option value="4">Tablero 4x4</option>
-                        <option value="5">Tablero 5x6</option>
-                        <option value="6">Tablero 6x6</option>
+                        <option selected default value="facil">Tablero 4x4</option>
+                        <option value="medio">Tablero 5x6</option>
+                        <option value="dificil">Tablero 6x6</option>
+                        <option value="personalizado">Personalizado</option>
                     </select>
                 </td>
+            </tr>
+            <tr  class="personalizado">
+                <td>Filas:</td>
+                <td><input type="number" min="1" max="9"></td>
+            </tr>
+            <tr class="personalizado">
+                <td>Columnas:</td>
+                <td><input type="number" min="1" max="9"></td>
             </tr>
             <tr>
                 <th>Tema:</th>
                 <td>
                     <select id="tema">
-                        <option value="banderas">Banderas</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
+                        <option selected default value="banderas" class="temas">Banderas</option>
+                        <option value="tema1" class="temas">tema1</option>
+                        <option value="tema2" class="temas">tema2</option>
+                        <option value="tema3" class="temas">tema3</option>
                         <option value="aleatorio">Aleatorio</option>
                     </select>
                 </td>
@@ -53,7 +62,7 @@
                 <th>Temporizador:</th>
                 <td>
                     <select id="temp">
-                        <option value="true">Activado</option>
+                        <option selected default value="true">Activado</option>
                         <option value="false">Desactivado</option>
                     </select>
                 </td>
@@ -95,6 +104,9 @@
         <div id="tablero">
 
         </div>
+
+        <h1 id="hTema">Tema:</h1>
+
     </div>
 
     <script async src="/js/main.js"></script>

@@ -93,8 +93,8 @@ function tomaValoresFilas() {
             nColumnas = 4;
             break;
         case "medio":
-            nFilas = 5;
-            nColumnas = 6;
+            nFilas = 6;
+            nColumnas = 5;
             break;
         case "dificil":
             nFilas = 6;
@@ -121,10 +121,12 @@ function colocaTarjetas() {
         const carta = document.createElement("div");
         carta.classList.add("carta");
 
-        carta.innerHTML = "Hola";
+        carta.innerHTML = "<img src=" + "../img/Bart_Simpson.webp" + ">";
 
         wrapper.appendChild(carta);
 
 
     }
+
+    wrapper.style.gridTemplateColumns = "repeat(" + nColumnas + ", 1fr)";
 }

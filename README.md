@@ -21,3 +21,24 @@ Hemos decidido usar 1 solo archivo Html.
 **Ideas de mejora futura:**
 
 Mejorar el header de la pantalla del juego para que el cronometro y el contador esten bien situados.
+
+## Sesion 2 - Transición de Pantallas y Preparación de Partida
+
+**Resumen:**
+Hemos generado la transición a la pantalla de juego con las opciones seleccionadas por el usuario en la configuración. Hemos validado que no existan campos vacíos o incorrectos en la configuración del juego.
+En Javascript hemos realizado validaciones para que el numero de cartas sean pares (al seleccionar el tablero personalizado) y muestre una alerta en caso de que sean impares. Hemos generado los tableros personalizados en función de la selección del usuario. 
+
+**Dificultades encontradas:**
+Cómo organizar los divs para que se muestren en forma de rejilla y con el tamaño indicado por el usuario. 
+**Soluciones aplicadas:**
+
+**Fuentes consultadas:**
+https://developer.mozilla.org
+https://stackoverflow.com
+
+**Decisiones Tecnicas:**
+Utilizar la propiedad grid para organizar las cartas en el tablero. 
+
+**Ideas de mejora futura:**
+Ajustar dinámicamente el tablero y las cartas para que se muestren siempre en pantalla sin hacer scroll.
+

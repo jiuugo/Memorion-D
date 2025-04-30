@@ -54,7 +54,7 @@ header{
     backdrop-filter: blur(10px);
 }
 
-.wrapper{
+#wrapper{
     margin: 2em auto;
     background-color: white;
     width: 90%;
@@ -95,6 +95,6 @@ header{
     padding: 0;
 }
 
-.wrapper div{
-    background-color: black;
+#wrapper div{
+    background-color: lightblue;
 }

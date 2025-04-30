@@ -121,7 +121,7 @@ function colocaTarjetas() {
         const carta = document.createElement("div");
         carta.classList.add("carta");
 
-        carta.innerHTML = "<img src=" + "../img/Bart_Simpson.webp" + ">";
+        carta.innerHTML = "<img src=" + "../img/Homer_Simpson.webp" + ">";
 
         wrapper.appendChild(carta);
 

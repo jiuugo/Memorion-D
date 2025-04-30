@@ -1,0 +1,113 @@
+body {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-image: url("/img/tablero.jpg");
+    color: white;
+}
+
+#config {
+    color: white;
+    font-size: 17px;
+    width: 20em;
+    margin: 10em auto;
+    border: solid white 3px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    padding: 1em;
+}
+
+#config td,
+th {
+    padding: 10px;
+}
+
+#config td {
+    width: 10px;
+    text-align: right;
+}
+
+#config th {
+    text-align: left;
+}
+
+#tituloConf {
+    text-align: center;
+    font-size: 25px;
+}
+
+#config select,
+#config input {
+    width: 100px;
+}
+
+.personalizado input {
+    width: 30px;
+}
+
+.personalizado {
+    display: none;
+}
+
+#juego {
+    display: none;
+}
+
+header {
+    color: white;
+    font-size: 14px;
+    margin: 0 auto;
+    border: solid white 3px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+#wrapper {
+    margin: 2em auto;
+    background-color: white;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 4px 8px 10px black;
+    color: black;
+    padding: 10px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 1em;
+    grid-column-gap: 10px;
+}
+
+#wrapper img {
+    width: 100%;
+}
+
+#wrapper div {
+    border-radius: 10px;
+}
+
+header {
+    width: 90%;
+}
+
+#info {
+    margin: 0 auto;
+}
+
+#info td {
+    margin: 0;
+    padding: 1em;
+    width: 30%;
+}
+
+#crono {
+    font-size: 23px;
+    width: 120px;
+}
+
+#crono td {
+    margin: 0;
+    padding: 0;
+}
+
+#wrapper div {
+    background-color: lightblue;
+}

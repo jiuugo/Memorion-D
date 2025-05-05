@@ -57,6 +57,7 @@ aceptar.addEventListener("click", () => {
     
     aleatorizaBanderas();
 
+
     volteaCartas();
 
 
@@ -81,14 +82,14 @@ function aleatorizaBanderas() {
 
 function volteaCartas(){
     for(var i = 0; i <nFilas * nColumnas; i++){
-        const carta = document.getElementById("carta " + i);
+        const carta = document.getElementById(i);
 
         carta.addEventListener("click", () => {
 
             carta.classList.add("voltea");
 
             setTimeout(function(){
-                carta.innerHTML = "<p>" + imgCartas[i] +"</p>";
+                carta.innerHTML = "<img src=" + "../img/banderas/" + imgCartas[carta.id] + ".png" + ">";
             }, 300);
 
             
@@ -169,7 +170,7 @@ function colocaTarjetas() {
         const carta = document.createElement("div");
         carta.classList.add("carta");
 
-        carta.setAttribute("id", "carta " + i);
+        carta.setAttribute("id", i);
 
         carta.innerHTML = "<img src=" + "../img/banderas/spain_32.png" + ">";
 

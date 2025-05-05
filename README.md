@@ -42,3 +42,29 @@ Utilizar la propiedad grid para organizar las cartas en el tablero.
 **Ideas de mejora futura:**
 Ajustar dinámicamente el tablero y las cartas para que se muestren siempre en pantalla sin hacer scroll.
 
+## Sesión 3: Volteo de Cartas y Lógica de Emparejamiento
+
+**Resumen:**
+Hemos programado el volteo de las cartas, se ha implementado también la comparación de parejas.
+Hemos implementado la función que añade a cada div de cartas una imagen aleatoriamente.
+
+
+**Dificultades encontradas:**
+Las dificultades encontradas se han resuelto satisfactoriamente. 
+
+**Soluciones aplicadas:**
+
+
+**Fuentes consultadas:**
+https://developer.mozilla.org
+https://stackoverflow.com
+
+**Decisiones Tecnicas:**
+
+
+**Ideas de mejora futura:**
+Bloquear tablero durante comparaciones, para que el usuario no pueda voltear cartas indiscriminadamente.
+Mostrar durante unos segundos las dos cartas seleccionadas por el usuario y voltear en caso de no ser un acierto.
+Gestionar cartas acertadas y contabilizar intentos.
+
+

@@ -18,6 +18,8 @@ const personalizado = document.getElementsByClassName("personalizado");
 
 let intentos = 0;
 
+let imgCartas;
+
 aceptar.addEventListener("click", () => {
 
     if (nombre.value === "") {
@@ -42,6 +44,8 @@ aceptar.addEventListener("click", () => {
         return;
     }
 
+    imgCartas = new Array(nFilas * nColumnas);
+
     colocaTarjetas();
 
     inicio.style.display = "none";
@@ -50,7 +54,32 @@ aceptar.addEventListener("click", () => {
     
     const cartas = document.getElementsByClassName("carta");
 
+    
+    aleatorizaBanderas();
 
+    volteaCartas();
+
+
+})
+
+function aleatorizaBanderas() {
+    let totalCartas = nFilas * nColumnas;
+    let pares = [];
+
+    for (let i = 0; i < totalCartas / 2; i++) {
+        pares.push(i);
+        pares.push(i);
+    }
+
+    for (let i = pares.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pares[i], pares[j]] = [pares[j], pares[i]];
+    }
+
+    imgCartas = pares;
+}
+
+function volteaCartas(){
     for(var i = 0; i <nFilas * nColumnas; i++){
         const carta = document.getElementById("carta " + i);
 
@@ -59,18 +88,14 @@ aceptar.addEventListener("click", () => {
             carta.classList.add("voltea");
 
             setTimeout(function(){
-                carta.innerHTML = "<img src=" + "../img/banderas/republic_congo_32.png" + ">";;
+                carta.innerHTML = "<p>" + imgCartas[i] +"</p>";
             }, 300);
 
             
 
         })
     }
-
-
-
-})
-
+}
 
 nivel.addEventListener("click", () => {
     if (nivel.value === "personalizado") {

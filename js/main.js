@@ -20,6 +20,8 @@ let intentos = 0;
 
 let imgCartas;
 
+let elegidas = new Array();
+
 aceptar.addEventListener("click", () => {
 
     if (nombre.value === "") {
@@ -92,7 +94,18 @@ function volteaCartas(){
                 carta.innerHTML = "<img src=" + "../img/banderas/" + imgCartas[carta.id] + ".png" + ">";
             }, 300);
 
-            
+            elegidas.push(carta.id);
+
+            if(elegidas.length==2){
+                if(imgCartas[elegidas[0]] === imgCartas[elegidas[1]]){
+                    alert("Acertaste.")
+                }else{
+                    alert("Fallaste.");
+                }
+                elegidas = [];
+                intentos++;
+                actIntentos();
+            }
 
         })
     }
@@ -172,7 +185,7 @@ function colocaTarjetas() {
 
         carta.setAttribute("id", i);
 
-        carta.innerHTML = "<img src=" + "../img/banderas/spain_32.png" + ">";
+        carta.innerHTML = "<img src=" + "../img/Simpson/0.webp" + ">";
 
         wrapper.appendChild(carta);
 

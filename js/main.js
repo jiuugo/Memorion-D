@@ -55,7 +55,15 @@ aceptar.addEventListener("click", () => {
         const carta = document.getElementById("carta " + i);
 
         carta.addEventListener("click", () => {
-            carta.style.backgroundColor = "orange";
+
+            carta.classList.add("voltea");
+
+            setTimeout(function(){
+                carta.innerHTML = "<img src=" + "../img/banderas/republic_congo_32.png" + ">";;
+            }, 300);
+
+            
+
         })
     }
 
@@ -138,7 +146,7 @@ function colocaTarjetas() {
 
         carta.setAttribute("id", "carta " + i);
 
-        carta.innerHTML = "<img src=" + "../img/Homer_Simpson.webp" + ">";
+        carta.innerHTML = "<img src=" + "../img/banderas/spain_32.png" + ">";
 
         wrapper.appendChild(carta);
 

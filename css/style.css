@@ -111,3 +111,9 @@ header {
 #wrapper div {
     background-color: lightblue;
 }
+
+.voltea{
+    transform: rotateY(180deg);
+
+    transition: transform 1s;    
+}

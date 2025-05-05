@@ -46,6 +46,21 @@ aceptar.addEventListener("click", () => {
 
     inicio.style.display = "none";
     juego.style.display = "block";
+
+    
+    const cartas = document.getElementsByClassName("carta");
+
+
+    for(var i = 0; i <nFilas * nColumnas; i++){
+        const carta = document.getElementById("carta " + i);
+
+        carta.addEventListener("click", () => {
+            carta.style.backgroundColor = "orange";
+        })
+    }
+
+
+
 })
 
 
@@ -121,12 +136,17 @@ function colocaTarjetas() {
         const carta = document.createElement("div");
         carta.classList.add("carta");
 
+        carta.setAttribute("id", "carta " + i);
+
         carta.innerHTML = "<img src=" + "../img/Homer_Simpson.webp" + ">";
 
         wrapper.appendChild(carta);
 
+        
 
     }
 
     wrapper.style.gridTemplateColumns = "repeat(" + nColumnas + ", 1fr)";
 }
+
+

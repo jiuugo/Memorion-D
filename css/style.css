@@ -117,11 +117,3 @@ header {
 
     transition: transform 1s;    
 }
-
-.fallada{
-
-    transform: rotateY(-180deg);
-
-    transition: transform 1s;  
-
-}

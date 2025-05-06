@@ -22,6 +22,7 @@ let reversoCarta = "<img src=" + "../img/Simpson/0.webp" + ">";
 let intentos = 0;
 
 let imgCartas;
+let resueltas;
 
 let elegidas = new Array();
 
@@ -50,6 +51,7 @@ aceptar.addEventListener("click", () => {
     }
 
     imgCartas = new Array(nFilas * nColumnas);
+    resueltas = new Array(nFilas * nColumnas);
 
     colocaTarjetas();
 
@@ -110,7 +112,6 @@ function manejarClickCarta(event) {
 
     if (elegidas.length === 2) {
         if (imgCartas[elegidas[0]] === imgCartas[elegidas[1]]) {
-            alert("Acertaste.");
 
             // Desactiva el click en ambas cartas acertadas
             document.getElementById(elegidas[0]).removeEventListener("click", manejarClickCarta);
@@ -118,6 +119,13 @@ function manejarClickCarta(event) {
 
             document.getElementById(elegidas[0]).style.backgroundColor = "Green";
             document.getElementById(elegidas[1]).style.backgroundColor = "Green";
+            resueltas[elegidas[0]] = 1;
+            resueltas[elegidas[1]] = 1;
+
+            if(resueltas.reduce((acumulador, valorActual) => acumulador + valorActual, 0)===nFilas*nColumnas){
+                alert("GANASTE");
+                detenerCrono();
+            }
         } else {
             document.getElementById(elegidas[0]).addEventListener("click", manejarClickCarta);
             document.getElementById(elegidas[1]).addEventListener("click", manejarClickCarta);

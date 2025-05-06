@@ -307,6 +307,3 @@ function reiniciarCrono() {
     centesimas = 0;
     actualizarCrono();
 }
-
-// Puedes llamar a iniciarCrono() cuando empiece el juego
-// y detenerCrono() cuando termine

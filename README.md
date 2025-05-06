@@ -68,3 +68,22 @@ Mostrar durante unos segundos las dos cartas seleccionadas por el usuario y volt
 Gestionar cartas acertadas y contabilizar intentos.
 
 
+## Sesión 4: Reloj Activo y Personalización Avanzada
+
+**Resumen:**
+
+
+
+**Dificultades encontradas:**
+
+
+**Soluciones aplicadas:**
+
+
+**Fuentes consultadas:**
+
+
+**Decisiones Tecnicas:**
+
+
+**Ideas de mejora futura:**

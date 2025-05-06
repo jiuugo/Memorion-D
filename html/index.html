@@ -11,6 +11,7 @@
 
 <body>
     <div id="inicio">
+        <img src="../img/logo.png" alt="Memorión" id="logo">
         <table id="config">
             <tr>
                 <th colspan="2" id="tituloConf">Configuración</th>
@@ -39,7 +40,7 @@
                     </select>
                 </td>
             </tr>
-            <tr  class="personalizado">
+            <tr class="personalizado">
                 <td>Filas:</td>
                 <td><input type="number" min="1" max="6" id="persFilas"></td>
             </tr>
@@ -52,9 +53,9 @@
                 <td>
                     <select id="tema">
                         <option selected default value="banderas" class="temas">Banderas</option>
-                        <option value="tema1" class="temas">tema1</option>
-                        <option value="tema2" class="temas">tema2</option>
-                        <option value="tema3" class="temas">tema3</option>
+                        <option value="Simpson" class="temas">Simpson</option>
+                        <option value="Coches" class="temas">Coches</ption>
+                        <option value="Animales" class="temas">Animales</option>
                         <option value="aleatorio">Aleatorio</option>
                     </select>
                 </td>
@@ -79,28 +80,32 @@
     </div>
 
     <div id="juego">
-        
-    <header>
-        <table id="info">
-            <tr>
-                <td><h1 id="hNombre">Jugador: </h1></td>
-                <td><h1 id="intent">Intentos:</h1></td>
-                <td>
-                    <table id="crono">
-                        <tr>
-                            <th colspan="4">Tiempo</th>
-                        </tr>
-                    <tr>
-                        <td class="reloj" id="horas">00</td>
-                        <td class="reloj" id="minutos">:00</td>
-                        <td class="reloj" id="segundos">:00</td>
-                        <td class="reloj" id="centesimas">:00</td>
-                    </tr>
-                </table>
-            </td>
-            </tr>
-        </table>
-    </header>
+
+        <header>
+            <table id="info">
+                <tr>
+                    <td>
+                        <h1 id="hNombre">Jugador: </h1>
+                    </td>
+                    <td>
+                        <h1 id="intent">Intentos:</h1>
+                    </td>
+                    <td>
+                        <table id="crono">
+                            <tr>
+                                <th colspan="4">Tiempo</th>
+                            </tr>
+                            <tr>
+                                <td class="reloj" id="horas">00</td>
+                                <td class="reloj" id="minutos">:00</td>
+                                <td class="reloj" id="segundos">:00</td>
+                                <td class="reloj" id="centesimas">:00</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </header>
 
         <div id="wrapper">
         </div>

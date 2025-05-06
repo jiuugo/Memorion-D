@@ -68,3 +68,35 @@ Mostrar durante unos segundos las dos cartas seleccionadas por el usuario y volt
 Gestionar cartas acertadas y contabilizar intentos.
 
 
+## Sesión 4: Reloj Activo y Personalización Avanzada
+
+**Resumen:**
+
+Hemos implementado la función que ayer no habíamos finalizado "mostrar durante unos segundos las dos cartas seleccionadas por el usuario" y "voltear en caso de no ser un acierto y gestionar cartas acertadas y contabilizar intentos".
+
+Hemos implementado la función de que se inicie el crono en el momento en el que se hace click en la primera carta.
+Ademas para saber cuando para el crono hemos creado un array que va contando cuantas cartas están resueltas y cuando están todas, se detiene el crono con la función implementada.
+
+Hemos redimensionado las imagenes para que según temática tengan el mismo tamaño.
+
+Además se ha implementado la función de validación de configuración para que el tablero muestre las cartas con la temática seleccionada. 
+
+
+**Dificultades encontradas:**
+
+No encontrar assets para cada tema, las imagenes de las cartas quedan giradas, se giran sin que lo queramos. 
+
+**Soluciones aplicadas:**
+
+Estamos trabajando con GIMP para crear imagenes adecuadas.
+
+**Fuentes consultadas:**
+https://developer.mozilla.org
+https://stackoverflow.com
+
+**Decisiones Tecnicas:**
+
+
+**Ideas de mejora futura:**
+
+Bloqueo de tablero, que la opción de desactivar cronómetro funcione. 

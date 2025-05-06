@@ -9,7 +9,7 @@ body {
     color: white;
     font-size: 17px;
     width: 20em;
-    margin: 10em auto;
+    margin: 1em auto;
     border: solid white 3px;
     border-radius: 15px;
     backdrop-filter: blur(10px);
@@ -64,7 +64,7 @@ header {
 #wrapper {
     margin: 2em auto;
     background-color: white;
-    width: 80%;
+    width: 700px;
     border-radius: 10px;
     box-shadow: 4px 8px 10px black;
     color: black;
@@ -123,4 +123,12 @@ img {
     image-rendering: -moz-crisp-edges;   /* Firefox antiguo */
     image-rendering: -webkit-optimize-contrast; /* Safari antiguo */
     image-rendering: optimizeSpeed; /* Edge antiguo */
+}
+.carta{
+    padding: 5px;
+}
+
+#logo{
+    margin: 7em auto 2em auto; 
+    width: 700px;
 }

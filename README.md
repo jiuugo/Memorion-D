@@ -72,9 +72,10 @@ Gestionar cartas acertadas y contabilizar intentos.
 
 **Resumen:**
 
-
+Hemos implementado 
 
 **Dificultades encontradas:**
+
 
 
 **Soluciones aplicadas:**

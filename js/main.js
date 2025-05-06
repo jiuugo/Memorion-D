@@ -94,6 +94,7 @@ function activaVolteo(){
 }
 
 function manejarClickCarta(event) {
+    iniciarCrono();
     const carta = event.currentTarget;
 
     document.getElementById(carta.id).removeEventListener("click", manejarClickCarta);
@@ -253,3 +254,51 @@ function colocaTarjetas() {
     wrapper.style.gridTemplateColumns = "repeat(" + nColumnas + ", 1fr)";
 }
 
+let horas = 0, minutos = 0, segundos = 0, centesimas = 0;
+let intervalo;
+
+function actualizarCrono() {
+    // Actualiza la vista en pantalla
+    document.getElementById("horas").textContent = horas.toString().padStart(2, '0');
+    document.getElementById("minutos").textContent = ':' + minutos.toString().padStart(2, '0');
+    document.getElementById("segundos").textContent = ':' + segundos.toString().padStart(2, '0');
+    document.getElementById("centesimas").textContent = ':' + centesimas.toString().padStart(2, '0');
+}
+
+function iniciarCrono() {
+    if (!intervalo) {
+        intervalo = setInterval(() => {
+            centesimas++;
+            if (centesimas > 99) {
+                centesimas = 0;
+                segundos++;
+            }
+            if (segundos > 59) {
+                segundos = 0;
+                minutos++;
+            }
+            if (minutos > 59) {
+                minutos = 0;
+                horas++;
+            }
+            actualizarCrono();
+        }, 10); // 10 ms para centésimas
+    }
+}
+
+function detenerCrono() {
+    clearInterval(intervalo);
+    intervalo = null;
+}
+
+function reiniciarCrono() {
+    detenerCrono();
+    horas = 0;
+    minutos = 0;
+    segundos = 0;
+    centesimas = 0;
+    actualizarCrono();
+}
+
+// Puedes llamar a iniciarCrono() cuando empiece el juego
+// y detenerCrono() cuando termine

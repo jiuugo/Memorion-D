@@ -72,7 +72,10 @@ Gestionar cartas acertadas y contabilizar intentos.
 
 **Resumen:**
 
-Hemos implementado 
+Hemos implementado la función que ayer no habíamos finalizado "mostrar durante unos segundos las dos cartas seleccionadas por el usuario" y "voltear en caso de no ser un acierto y gestionar cartas acertadas y contabilizar intentos".
+
+Hemos implementado la función de que se inicie el crono en el momento en el que se hace click en la primera carta.
+Ademas para saber cuando para el crono hemos creado un array que va contando cuantas cartas están resueltas y cuando están todas, se detiene el crono con la función implementada.
 
 **Dificultades encontradas:**
 

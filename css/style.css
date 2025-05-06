@@ -117,3 +117,10 @@ header {
 
     transition: transform 1s;    
 }
+img {
+    image-rendering: pixelated;    /* Estándar moderno */
+    image-rendering: crisp-edges;  /* Compatibilidad */
+    image-rendering: -moz-crisp-edges;   /* Firefox antiguo */
+    image-rendering: -webkit-optimize-contrast; /* Safari antiguo */
+    image-rendering: optimizeSpeed; /* Edge antiguo */
+}

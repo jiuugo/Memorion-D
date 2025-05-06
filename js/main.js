@@ -16,7 +16,7 @@ const intent = document.getElementById("intent");
 
 const personalizado = document.getElementsByClassName("personalizado");
 
-let reversoCarta = "<img src=" + "../img/Simpson/0.webp" + ">";
+let reversoCarta = "<img src=" + "../img/banderas/20.png" + ">";
 
 
 let intentos = 0;

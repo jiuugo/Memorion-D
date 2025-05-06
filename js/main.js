@@ -18,6 +18,11 @@ const personalizado = document.getElementsByClassName("personalizado");
 
 let reversoCarta = "<img src=" + "../img/banderas/20.png" + ">";
 
+let carpetaCartas = "<img src='../img/banderas/";
+let tipoArchivoCartas = ".png'>";
+
+
+
 
 let intentos = 0;
 
@@ -41,6 +46,7 @@ aceptar.addEventListener("click", () => {
         tema.value = temas[numRnd].value;
     }
 
+    seleccionaAssetsTema();
 
     actIntentos();
     poneNombre();
@@ -69,6 +75,32 @@ aceptar.addEventListener("click", () => {
 
 
 })
+
+function seleccionaAssetsTema(){
+
+    switch (tema.value) {
+        case "banderas":
+            reversoCarta = "<img src=" + "../img/banderas/20.png" + ">";
+            carpetaCartas = "<img src='../img/banderas/";
+            tipoArchivoCartas = ".png'>";
+            break;
+        case "Simpson":
+            reversoCarta = "<img src=" + "../img/deck-back.png" + ">";
+            carpetaCartas = "<img src='../img/Simpson/";
+            tipoArchivoCartas = ".webp'>";
+            break;
+        case "Coches":
+            reversoCarta = "<img src=" + "../img/deck-back.png" + ">";
+            carpetaCartas = "<img src='../img/coches/";
+            tipoArchivoCartas = ".jpg'>";
+            break;
+        case "Animales":
+            reversoCarta = "<img src=" + "../img/deck-back.png" + ">";
+            carpetaCartas = "<img src='../img/Animales/";
+            tipoArchivoCartas = ".jpg'>";
+            break;
+    }
+}
 
 function aleatorizaBanderas() {
     let totalCartas = nFilas * nColumnas;
@@ -105,7 +137,7 @@ function manejarClickCarta(event) {
     carta.classList.add("voltea");
 
     setTimeout(function(){
-        carta.innerHTML = "<img src='../img/banderas/" + imgCartas[carta.id] + ".png'>";
+        carta.innerHTML = carpetaCartas + imgCartas[carta.id] + tipoArchivoCartas;
     }, 300);
 
     elegidas.push(carta.id);

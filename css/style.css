@@ -1,7 +1,14 @@
+html{
+    height: 100%;
+}
+
 body {
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-image: url("/img/tablero.jpg");
+    background-image: url("/img/pixel-physical-map-of-the-world-vector-7741252.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     color: white;
 }
 
@@ -63,10 +70,8 @@ header {
 
 #wrapper {
     margin: 2em auto;
-    background-color: white;
     width: 700px;
     border-radius: 10px;
-    box-shadow: 4px 8px 10px black;
     color: black;
     padding: 10px;
 
@@ -109,7 +114,7 @@ header {
 }
 
 #wrapper div {
-    background-color: lightblue;
+    background-color: white;
 }
 
 .voltea{
@@ -126,6 +131,7 @@ img {
 }
 .carta{
     padding: 5px;
+    box-shadow: 4px 8px 10px black;
 }
 
 #logo{

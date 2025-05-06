@@ -132,11 +132,6 @@ function manejarClickCarta(event) {
             }, 600);
 
 
-
-
-
-
-
             setTimeout(() => {
                 document.getElementById(elegida0).classList.add("voltea");
                 
@@ -150,10 +145,18 @@ function manejarClickCarta(event) {
                 
                 document.getElementById(elegida1).innerHTML = reversoCarta;
 
+                //document.getElementById(elegida0).classList.remove("voltea");
+                //document.getElementById(elegida1).classList.remove("voltea");
+
+            }, 1300);
+
+            setTimeout(() => {
+
+
                 document.getElementById(elegida0).classList.remove("voltea");
                 document.getElementById(elegida1).classList.remove("voltea");
 
-            }, 2000);
+            }, 1500);
 
 
 

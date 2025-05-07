@@ -100,3 +100,25 @@ https://stackoverflow.com
 **Ideas de mejora futura:**
 
 Bloqueo de tablero, que la opción de desactivar cronómetro funcione. 
+
+## Sesión 5: Sistema de Puntuaciones y Almacenamiento
+
+**Resumen:**
+
+
+**Dificultades encontradas:**
+
+
+
+**Soluciones aplicadas:**
+
+
+
+**Fuentes consultadas:**
+https://developer.mozilla.org
+https://stackoverflow.com
+
+**Decisiones Tecnicas:**
+
+
+**Ideas de mejora futura:**

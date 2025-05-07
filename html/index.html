@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/img/Icon.png" type="image/x-icon">
     <title>Memorión - D</title>
 </head>
 
@@ -16,11 +16,11 @@
             <tr>
                 <th colspan="2" id="tituloConf">Configuración</th>
             </tr>
-            <tr>
+            <tr class="filas">
                 <th>Nombre:</th>
                 <td><input type="text" value="Roberto" id="nombre"></td>
             </tr>
-            <tr>
+            <tr class="filas">
                 <th>Modo de juego:</th>
                 <td>
                     <select id="modo">
@@ -29,7 +29,7 @@
                     </select>
                 </td>
             </tr>
-            <tr>
+            <tr class="filas">
                 <th>Nivel de juego:</th>
                 <td>
                     <select id="nivel">
@@ -48,7 +48,7 @@
                 <td>Columnas:</td>
                 <td><input type="number" min="1" max="6" id="persColumnas"></td>
             </tr>
-            <tr>
+            <tr class="filas">
                 <th>Tema:</th>
                 <td>
                     <select id="tema">
@@ -60,7 +60,7 @@
                     </select>
                 </td>
             </tr>
-            <tr>
+            <tr class="filas">
                 <th>Temporizador:</th>
                 <td>
                     <select id="temp">
@@ -69,14 +69,8 @@
                     </select>
                 </td>
             </tr>
-            <tr>
-                <th colspan="2">
-
-                    <button id="btnJugar">Jugar</button>
-
-                </th>
-            </tr>
         </table>
+        <button id="btnJugar">Jugar</button>
     </div>
 
     <div id="juego">
@@ -110,10 +104,24 @@
         <div id="wrapper">
         </div>
 
-        <h1 id="hTema">Tema:</h1>
 
+        <button id="btnGanar">Ganar</button>
     </div>
+    <div id="puntuacion">
+        <h1 id="mensajeFinal">Elena, has conseguido: puntos</h1>
+        <table id="ranking">
+            <tr>
+                <th colspan="2" id="tituloRanking">Ranking</th>
+            </tr>
 
+            
+
+
+        </table>
+
+
+        <button id="btnVolver">Volver</button>
+    </div>
     <script async src="/js/main.js"></script>
 </body>
 

@@ -100,3 +100,32 @@ https://stackoverflow.com
 **Ideas de mejora futura:**
 
 Bloqueo de tablero, que la opción de desactivar cronómetro funcione. 
+
+## Sesión 5: Sistema de Puntuaciones y Almacenamiento
+
+**Resumen:**
+
+Hemos hecho el reverso de los temas de cada carta, la tabla de puntuaciones hemos hecho unos retoques al menu del inicio, hemos añadido el boton de volver al acabar la partida, Hemos añadido un fondo diferente para cada tema mientras juegas.
+
+
+**Dificultades encontradas:**
+
+No conociamos como funcionaba el localstorage y nos hemos informado de como funcionaba.
+
+
+**Soluciones aplicadas:**
+
+hemos usado chatgpt, Gimp y Pixlr para hacer los reversos de las cartas
+
+
+**Fuentes consultadas:**
+https://developer.mozilla.org
+https://stackoverflow.com
+
+**Decisiones Tecnicas:**
+
+hemos trabajado en hacer 1 lista de todo lo que queremos arreglar o implementar.
+
+**Ideas de mejora futura:**
+
+Bloqueo de tablero, que la opción de desactivar cronómetro funcione, y añadir botones adicionales (Ver Historial, etc...)

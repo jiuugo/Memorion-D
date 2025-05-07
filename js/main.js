@@ -7,17 +7,18 @@ const nivel = document.getElementById("nivel");
 const tema = document.getElementById("tema");
 const temp = document.getElementById("temp");
 
+const body = document.getElementsByTagName("body")[0];
 
 const aceptar = document.getElementById("btnJugar");
 
 const hNombre = document.getElementById("hNombre");
-const hTema = document.getElementById("hTema");
 const intent = document.getElementById("intent");
 
 const personalizado = document.getElementsByClassName("personalizado");
 
 let reversoCarta = "<img src=" + "../img/banderas/20.png" + ">";
 
+let background;
 let carpetaCartas = "<img src='../img/banderas/";
 let tipoArchivoCartas = ".png'>";
 
@@ -50,7 +51,6 @@ aceptar.addEventListener("click", () => {
 
     actIntentos();
     poneNombre();
-    poneTema();
 
     if (!tomaValoresFilas()) {
         return;
@@ -83,21 +83,25 @@ function seleccionaAssetsTema(){
             reversoCarta = "<img src=" + "../img/banderas/20.png" + ">";
             carpetaCartas = "<img src='../img/banderas/";
             tipoArchivoCartas = ".png'>";
+            body.style.backgroundImage = "url('../img/Fondos/FondoBanderas.jpg')";
             break;
         case "Simpson":
-            reversoCarta = "<img src=" + "../img/deck-back.png" + ">";
+            reversoCarta = "<img src=" + "../img/Reversos/ReversoSimpson.webp" + ">";
             carpetaCartas = "<img src='../img/Simpson/";
             tipoArchivoCartas = ".webp'>";
+            body.style.backgroundImage = "url('../img/Fondos/FondoSimpsons.webp')";
             break;
         case "Coches":
-            reversoCarta = "<img src=" + "../img/deck-back.png" + ">";
+            reversoCarta = "<img src=" + "../img/Reversos/back720.png" + ">";
             carpetaCartas = "<img src='../img/coches/";
             tipoArchivoCartas = ".jpg'>";
+            body.style.backgroundImage = "url('../img/Fondos/FondoCoches.jpg')";
             break;
         case "Animales":
-            reversoCarta = "<img src=" + "../img/deck-back.png" + ">";
+            reversoCarta = "<img src=" + "../img/Reversos/backanimales.png" + ">";
             carpetaCartas = "<img src='../img/Animales/";
             tipoArchivoCartas = ".jpg'>";
+            body.style.backgroundImage = "url('../img/Fondos/FondoAnimales.webp')";
             break;
     }
 }
@@ -275,9 +279,6 @@ function poneNombre() {
     hNombre.textContent = "Jugador: " + nombre.value;
 }
 
-function poneTema() {
-    hTema.textContent = "Tema: " + tema.value;
-}
 
 let nFilas;
 let nColumnas;
@@ -393,6 +394,9 @@ const ranking = document.getElementById("ranking");
 
 function cambiarPantallaPuntuacion(){
 
+    const mensajeFinal = document.getElementById("mensajeFinal");
+    mensajeFinal.textContent = "¡Has ganado! La puntuación de "+ nombre.value +" es: " + calculaPuntuacion() + " puntos.";
+
     juego.style.display = "none";
     puntuacion.style.display = "block";
 
@@ -472,6 +476,8 @@ function reiniciarJuego() {
 
 
 function acabarPartida(){
+    body.style.backgroundImage = "url('../img/Fondos/tablero.jpg')";
+    body.style.backgroundRepeat = "repeat";
     guardaPuntuacion();
     ordenaPuntuaciones();
     cambiarPantallaPuntuacion()

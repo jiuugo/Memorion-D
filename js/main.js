@@ -22,7 +22,7 @@ let carpetaCartas = "<img src='../img/banderas/";
 let tipoArchivoCartas = ".png'>";
 
 
-
+let contadorJugadores = 0;
 
 let intentos = 0;
 
@@ -155,9 +155,10 @@ function manejarClickCarta(event) {
             resueltas[elegidas[1]] = 1;
 
             if(resueltas.reduce((acumulador, valorActual) => acumulador + valorActual, 0)===nFilas*nColumnas){
+                //ganar
                 detenerCrono();
                 alert("Tu puntuación es: " + calculaPuntuacion());
-                cambiarPantallaPuntuacion();
+                acabarPartida();
             }
         } else {
             document.getElementById(elegidas[0]).addEventListener("click", manejarClickCarta);
@@ -209,6 +210,44 @@ function manejarClickCarta(event) {
     }
 }
 
+function guardaPuntuacion() {
+    const puntuacion = calculaPuntuacion();
+    let jugador = {
+        nombreJ: nombre.value,
+        puntuacionJ: puntuacion,
+        parejasJ: nFilas*nColumnas/2,
+    };
+
+    localStorage.setItem("jugador" + contadorJugadores, JSON.stringify(jugador));
+    contadorJugadores++;
+}
+
+let puntuaciones = [];
+
+function ordenaPuntuaciones(){
+    let contador = 0;
+    puntuaciones = [];
+    let jugador = null;
+
+    do{
+        jugador = JSON.parse(localStorage.getItem("jugador" + contador));
+        if(jugador){
+            puntuaciones.push(jugador);
+        }else{
+            break;
+        }
+        contador++;
+    }while(jugador);
+
+    //Devuelve el array de puntuaciones ordenando de menor a mayor por número de parejas y luego por puntuación.
+    puntuaciones.sort((a, b) => {
+        if (a.parejasJ === b.parejasJ) {
+            return a.puntuacionJ - b.puntuacionJ;
+        }
+        return a.parejasJ - b.parejasJ;
+    });
+
+}
 
 nivel.addEventListener("click", () => {
     if (nivel.value === "personalizado") {
@@ -348,12 +387,43 @@ function calculaPuntuacion(){
     return puntuacion;
 }
 
+
+const ranking = document.getElementById("ranking");
+
+
 function cambiarPantallaPuntuacion(){
+
     juego.style.display = "none";
     puntuacion.style.display = "block";
 
-    const puntuacionFinal = document.getElementById("puntuacionFinal");
-    puntuacionFinal.textContent = "Tu puntuación es: " + calculaPuntuacion();
+    ranking.innerHTML = '';
+    const cabecera = document.createElement("tr");
+    cabecera.innerHTML = "<th>Nombre</th><th>Puntuación</th><th>Parejas</th>";
+    ranking.appendChild(cabecera);
+
+    for(var i = 0; i < puntuaciones.length;i++){
+        let jugador = JSON.parse(localStorage.getItem("jugador" + i));
+
+
+        const fila = document.createElement("tr");
+
+        const colNombre = document.createElement("td");
+        const colPuntuacion = document.createElement("td");
+        const colParejas = document.createElement("td");
+
+        colNombre.innerHTML = jugador.nombreJ;
+        colPuntuacion.innerHTML = jugador.puntuacionJ;
+        colParejas.innerHTML = jugador.parejasJ;
+        
+        fila.appendChild(colNombre);
+        fila.appendChild(colPuntuacion);
+        fila.appendChild(colParejas);
+
+        ranking.appendChild(fila);
+
+    }
+
+
 }
 
 const btnGanar = document.getElementById("btnGanar");
@@ -364,6 +434,45 @@ btnGanar.addEventListener("click", () => {
     //Toma tiempo al azar entre 1 y 5 minutos
     let tiempo = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
 
-    cambiarPantallaPuntuacion()
+    acabarPartida();
 
 })
+
+
+const btnVolver = document.getElementById("btnVolver");
+
+btnVolver.addEventListener("click", () => {
+    reiniciarJuego()
+
+
+});
+
+function reiniciarJuego() {
+    inicio.style.display = "block";
+    puntuacion.style.display = "none";
+    juego.style.display = "none";
+    // Reinicia el cronómetro y los intentos
+    detenerCrono();
+    reiniciarCrono();
+    intentos = 0;
+    actIntentos();
+    elegidas = new Array();
+
+    // Reinicia el juego y vuelve a la pantalla de inicio
+    inicio.style.display = "block";
+    juego.style.display = "none";
+
+    // Limpia el contenedor de cartas
+    wrapper.innerHTML = '';
+
+    // Reinicia las variables
+    imgCartas = null;
+    resueltas = null
+}
+
+
+function acabarPartida(){
+    guardaPuntuacion();
+    ordenaPuntuaciones();
+    cambiarPantallaPuntuacion()
+}

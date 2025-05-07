@@ -155,8 +155,9 @@ function manejarClickCarta(event) {
             resueltas[elegidas[1]] = 1;
 
             if(resueltas.reduce((acumulador, valorActual) => acumulador + valorActual, 0)===nFilas*nColumnas){
-                alert("GANASTE");
                 detenerCrono();
+                alert("Tu puntuación es: " + calculaPuntuacion());
+                cambiarPantallaPuntuacion();
             }
         } else {
             document.getElementById(elegidas[0]).addEventListener("click", manejarClickCarta);
@@ -339,3 +340,30 @@ function reiniciarCrono() {
     centesimas = 0;
     actualizarCrono();
 }
+
+
+function calculaPuntuacion(){
+    let tiempo = (horas * 3600) + (minutos * 60) + segundos + (centesimas / 100);
+    let puntuacion = Math.round(((nFilas * nColumnas) / (intentos * tiempo))*100000);
+    return puntuacion;
+}
+
+function cambiarPantallaPuntuacion(){
+    juego.style.display = "none";
+    puntuacion.style.display = "block";
+
+    const puntuacionFinal = document.getElementById("puntuacionFinal");
+    puntuacionFinal.textContent = "Tu puntuación es: " + calculaPuntuacion();
+}
+
+const btnGanar = document.getElementById("btnGanar");
+
+btnGanar.addEventListener("click", () => {
+    //Toma intentos al azar entre 10 y 50
+    let intentos = Math.floor(Math.random() * (50 - 10 + 1)) + 10;
+    //Toma tiempo al azar entre 1 y 5 minutos
+    let tiempo = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
+
+    cambiarPantallaPuntuacion()
+
+})

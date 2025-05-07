@@ -5,7 +5,7 @@ html{
 body {
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-image: url("/img/pixel-physical-map-of-the-world-vector-7741252.jpg");
+    background-image: url("/img/tablero.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -122,7 +122,7 @@ header {
 
     transition: transform 1s;    
 }
-img {
+.carta img {
     image-rendering: pixelated;    /* Estándar moderno */
     image-rendering: crisp-edges;  /* Compatibilidad */
     image-rendering: -moz-crisp-edges;   /* Firefox antiguo */
@@ -137,4 +137,8 @@ img {
 #logo{
     margin: 7em auto 2em auto; 
     width: 700px;
+}
+
+#puntuacion{
+    display: none;
 }

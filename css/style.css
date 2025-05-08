@@ -1,6 +1,4 @@
-html{
-    height: 100%;
-}
+
 
 body {
     text-align: center;
@@ -9,6 +7,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-attachment: fixed;
     color: white;
 }
 
@@ -77,8 +76,7 @@ header {
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-row-gap: 1em;
-    grid-column-gap: 1em;
+    gap: 25px;
 }
 
 #wrapper img {
@@ -122,6 +120,8 @@ header {
     image-rendering: crisp-edges;
     image-rendering: pixelated;
     -ms-interpolation-mode: nearest-neighbor;
+    background-color: pink;
+    border-radius: 5px;
 }
 .carta {
     height: 200px;

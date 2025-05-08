@@ -29,10 +29,15 @@ let intentos = 0;
 
 let imgCartas;
 let resueltas;
+let bloqueo = false;
 
 let elegidas = new Array();
 
 aceptar.addEventListener("click", () => {
+
+    if (!tomaValoresFilas()) {
+        return;
+    }
 
     if (nombre.value === "") {
         alert("Introduce un nombre.");
@@ -52,12 +57,12 @@ aceptar.addEventListener("click", () => {
     actIntentos();
     poneNombre();
 
-    if (!tomaValoresFilas()) {
-        return;
-    }
+
 
     imgCartas = new Array(nFilas * nColumnas);
     resueltas = new Array(nFilas * nColumnas);
+
+    aleatorizaBanderas();
 
     colocaTarjetas();
 
@@ -68,7 +73,9 @@ aceptar.addEventListener("click", () => {
     const cartas = document.getElementsByClassName("carta");
 
     
-    aleatorizaBanderas();
+    if(modo.value==="flash"){
+        voltearTodasCartas();
+    }
 
 
     activaVolteo();
@@ -80,30 +87,46 @@ function seleccionaAssetsTema(){
 
     switch (tema.value) {
         case "banderas":
-            reversoCarta = "<img src=" + "../img/banderas/20.png" + ">";
-            carpetaCartas = "<img src='../img/banderas/";
-            tipoArchivoCartas = ".png'>";
+            reversoCarta = "../img/banderas/20.png";
+            carpetaCartas = "../img/banderas/";
+            tipoArchivoCartas = ".png";
             body.style.backgroundImage = "url('../img/Fondos/FondoBanderas.jpg')";
             break;
         case "Simpson":
-            reversoCarta = "<img src=" + "../img/Reversos/ReversoSimpson.webp" + ">";
-            carpetaCartas = "<img src='../img/Simpson/";
-            tipoArchivoCartas = ".webp'>";
+            reversoCarta = "../img/Reversos/ReversoSimpson.webp";
+            carpetaCartas = "../img/Simpson/";
+            tipoArchivoCartas = ".webp";
             body.style.backgroundImage = "url('../img/Fondos/FondoSimpsons.webp')";
             break;
         case "Coches":
-            reversoCarta = "<img src=" + "../img/Reversos/back720.png" + ">";
-            carpetaCartas = "<img src='../img/coches/";
-            tipoArchivoCartas = ".jpg'>";
+            reversoCarta = "../img/Reversos/back720.png";
+            carpetaCartas = "../img/coches/";
+            tipoArchivoCartas = ".jpg";
             body.style.backgroundImage = "url('../img/Fondos/FondoCoches.jpg')";
             break;
         case "Animales":
-            reversoCarta = "<img src=" + "../img/Reversos/backanimales.png" + ">";
-            carpetaCartas = "<img src='../img/Animales/";
-            tipoArchivoCartas = ".jpg'>";
+            reversoCarta = "../img/Reversos/backanimales.png";
+            carpetaCartas = "../img/Animales/";
+            tipoArchivoCartas = ".jpg";
             body.style.backgroundImage = "url('../img/Fondos/FondoAnimales.webp')";
             break;
     }
+}
+
+function voltearTodasCartas() {
+    const cartas = document.getElementsByClassName("carta");
+
+    for (let i = 0; i < cartas.length; i++) {
+        cartas[i].classList.add("volteada");
+        resueltas[i] = 1;
+    }
+
+    setTimeout(() => {
+        for (let i = 0; i < cartas.length; i++) {
+            cartas[i].classList.remove("volteada");
+            resueltas[i] = 0;
+        }
+    }, 2000); // Espera 2 segundos antes de voltear las cartas de nuevo
 }
 
 function aleatorizaBanderas() {
@@ -133,86 +156,65 @@ function activaVolteo(){
 
 function manejarClickCarta(event) {
     iniciarCrono();
+
+    // Si está bloqueado o ya hay 2 cartas elegidas, no hacemos nada
+    if (bloqueo || elegidas.length >= 2) return;
+
     const carta = event.currentTarget;
 
-    document.getElementById(carta.id).removeEventListener("click", manejarClickCarta);
+    // Si esta carta ya está resuelta (verde), ignoramos el click
+    if (resueltas[carta.id] === 1) return;
 
+    // Si ya está volteada, tampoco dejamos seguir (esto evita hacer trampa clicando la misma dos veces)
+    if (carta.classList.contains("volteada")) return;
 
-    carta.classList.add("voltea");
-
-    setTimeout(function(){
-        carta.innerHTML = carpetaCartas + imgCartas[carta.id] + tipoArchivoCartas;
-    }, 300);
-
-    elegidas.push(carta.id);
+    // Voltea la carta
+    carta.classList.add("volteada");
+    elegidas.push(carta);
 
     if (elegidas.length === 2) {
-        if (imgCartas[elegidas[0]] === imgCartas[elegidas[1]]) {
-
-            // Desactiva el click en ambas cartas acertadas
-            document.getElementById(elegidas[0]).removeEventListener("click", manejarClickCarta);
-            document.getElementById(elegidas[1]).removeEventListener("click", manejarClickCarta);
-
-            document.getElementById(elegidas[0]).style.backgroundColor = "Green";
-            document.getElementById(elegidas[1]).style.backgroundColor = "Green";
-            resueltas[elegidas[0]] = 1;
-            resueltas[elegidas[1]] = 1;
-
-            if(resueltas.reduce((acumulador, valorActual) => acumulador + valorActual, 0)===nFilas*nColumnas){
-                //ganar
-                detenerCrono();
-                alert("Tu puntuación es: " + calculaPuntuacion());
-                acabarPartida();
-            }
-        } else {
-            document.getElementById(elegidas[0]).addEventListener("click", manejarClickCarta);
-            document.getElementById(elegidas[1]).addEventListener("click", manejarClickCarta);
-
-            let elegida0 = elegidas[0];
-
-            let elegida1 = elegidas[1];
-
-            setTimeout(() => {
-                document.getElementById(elegida0).classList.remove("voltea");
-                document.getElementById(elegida1).classList.remove("voltea");
-                
-            }, 600);
-
-
-            setTimeout(() => {
-                document.getElementById(elegida0).classList.add("voltea");
-                
-                document.getElementById(elegida1).classList.add("voltea");
-                
-            }, 1000);
-
-            
-            setTimeout(() => {
-                document.getElementById(elegida0).innerHTML = reversoCarta;
-                
-                document.getElementById(elegida1).innerHTML = reversoCarta;
-
-                //document.getElementById(elegida0).classList.remove("voltea");
-                //document.getElementById(elegida1).classList.remove("voltea");
-
-            }, 1300);
-
-            setTimeout(() => {
-
-
-                document.getElementById(elegida0).classList.remove("voltea");
-                document.getElementById(elegida1).classList.remove("voltea");
-
-            }, 1500);
-
-
-
-        }
-        elegidas = [];
-        intentos++;
-        actIntentos();
+        bloqueo = true; // 🔒 Bloqueamos mientras comprobamos
+        comprobarPareja();
     }
 }
+
+
+function comprobarPareja() {
+    const [carta1, carta2] = elegidas;
+
+    if (imgCartas[carta1.id] === imgCartas[carta2.id]) {
+        // ✅ ¡Correcto! Las dejamos volteadas
+        resueltas[carta1.id] = 1;
+        resueltas[carta2.id] = 1;
+
+        carta1.querySelector("img").style.border = "5px solid green";
+        carta2.querySelector("img").style.border = "5px solid green";
+
+
+        elegidas = [];
+        bloqueo = false; // 🔓 Desbloqueamos clicks aquí mismo
+
+        if (resueltas.reduce((acumulador, valorActual) => acumulador + valorActual, 0) === nFilas * nColumnas) {
+            detenerCrono();
+            acabarPartida();
+        }
+
+    } else {
+        // ❌ No coinciden, voltearlas de vuelta tras un pequeño delay
+        setTimeout(() => {
+            carta1.classList.remove("volteada");
+            carta2.classList.remove("volteada");
+
+            elegidas = [];
+            bloqueo = false; // 🔓 Ahora sí dejamos que sigan clicando
+
+        }, 1000);
+    }
+
+    intentos++;
+    actIntentos();
+}
+
 
 function guardaPuntuacion() {
     const puntuacion = calculaPuntuacion();
@@ -305,8 +307,8 @@ function tomaValoresFilas() {
             nFilas = persFilas.value;
             nColumnas = persColumnas.value;
 
-            if ((nFilas * nColumnas) % 2 === 1) {
-                alert("El número total de tarjetas debe ser par. Cambia los valores personalizados.");
+            if (((nFilas * nColumnas) % 2 === 1)|| nFilas>= 7 || nColumnas >= 7|| nFilas <= 1 || nColumnas <= 1) {
+                alert("El número total de cartas debe ser par. Y el número de filas y columnas debe ser mayor que 1 y menor que 7.");
                 return false;
             }
             break;
@@ -321,19 +323,36 @@ function colocaTarjetas() {
     for (var i = 0; i < nFilas * nColumnas; i++) {
         const carta = document.createElement("div");
         carta.classList.add("carta");
-
         carta.setAttribute("id", i);
 
-        carta.innerHTML = reversoCarta;
+        // Crear la cara frente
+        const frente = document.createElement("div");
+        frente.classList.add("cara", "frente");
+        const imgFrente = document.createElement("img");
+        // Aquí puedes asignar la ruta de la carta si ya tienes las imágenes generadas
+        imgFrente.src = carpetaCartas + imgCartas[i] + tipoArchivoCartas; // de momento pongo "1" como ejemplo
+        frente.appendChild(imgFrente);
 
+        // Crear la cara reverso
+        const reverso = document.createElement("div");
+        reverso.classList.add("cara", "reverso");
+        const imgReverso = document.createElement("img");
+        imgReverso.src = reversoCarta; // Ahora usamos la ruta limpia directamente
+        reverso.appendChild(imgReverso);
+
+        // Añadir frente y reverso a la carta
+        carta.appendChild(frente);
+        carta.appendChild(reverso);
+
+        // Añadir la carta al contenedor
         wrapper.appendChild(carta);
-
-        
-
     }
 
+    // Ajustar las columnas según nColumnas
     wrapper.style.gridTemplateColumns = "repeat(" + nColumnas + ", 1fr)";
 }
+
+
 
 let horas = 0, minutos = 0, segundos = 0, centesimas = 0;
 let intervalo;
@@ -430,17 +449,6 @@ function cambiarPantallaPuntuacion(){
 
 }
 
-const btnGanar = document.getElementById("btnGanar");
-
-btnGanar.addEventListener("click", () => {
-    //Toma intentos al azar entre 10 y 50
-    let intentos = Math.floor(Math.random() * (50 - 10 + 1)) + 10;
-    //Toma tiempo al azar entre 1 y 5 minutos
-    let tiempo = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
-
-    acabarPartida();
-
-})
 
 
 const btnVolver = document.getElementById("btnVolver");
@@ -456,6 +464,7 @@ function reiniciarJuego() {
     puntuacion.style.display = "none";
     juego.style.display = "none";
     // Reinicia el cronómetro y los intentos
+    body.style.backgroundImage = "url('../img/Fondos/tablero.jpg')";
     detenerCrono();
     reiniciarCrono();
     intentos = 0;

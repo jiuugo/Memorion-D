@@ -109,15 +109,27 @@
     </div>
     <div id="puntuacion">
         <h1 id="mensajeFinal">Elena, has conseguido: puntos</h1>
+        <div id="opcionesRanking">
+            <h3 id="Oranking">Ver otros rankings:</h3>
+            <button onclick="verRankingDesdePuntuacion(4, 4)" id="P456">4x4</button>
+            <button onclick="verRankingDesdePuntuacion(6, 5)" id="P456">6x5</button>
+            <button onclick="verRankingDesdePuntuacion(6, 6)" id="P456">6x6</button>
+            <button onclick="verRankingDesdePuntuacionCustom()" id="P456">Personalizado</button>
+            <button onclick="verHistorial()" id="btnHistorial">Historial</button>
+        </div>
+        
+          
         <table id="ranking">
-            <tr>
-                <th colspan="2" id="tituloRanking">Ranking</th>
-            </tr>
-
-            
-
-
+            <thead>
+                <tr>
+                    <th colspan="4" id="tituloRanking">Ranking</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Las filas del ranking se llenarán dinámicamente con JS -->
+            </tbody>
         </table>
+        
 
 
         <button id="btnVolver">Volver</button>

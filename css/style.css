@@ -21,6 +21,7 @@ body {
     border-radius: 15px;
     backdrop-filter: blur(10px);
     padding: 1em;
+    font-family: cursive;
 }
 
 #config td,
@@ -66,6 +67,7 @@ header {
     border: solid white 3px;
     border-radius: 10px;
     backdrop-filter: blur(10px);
+    font-family: cursive;
 }
 
 #wrapper {
@@ -154,15 +156,17 @@ header {
     padding: 1em;
     border-collapse: separate;
     border-spacing: 0;
+    font-family: cursive;
 }
 
 #ranking td{
     padding: 10px;
     border-top: solid white 1px;
     border-bottom: solid white 1px;
+    font-family: cursive;
 }
 
-#btnVolver, #btnJugar{
+#btnVolver, #btnJugar, #P456, #btnHistorial{
     color: white;
     margin: 1em auto;
     padding: 10px;
@@ -172,10 +176,12 @@ header {
     font-size: 20px;
     cursor: pointer;
     backdrop-filter: blur(10px);
+    font-family: cursive;
 }
 
 #mensajeFinal{
     color: white;
+    font-family: cursive;
     font-size: 25px;
     width: 15em;
     margin: 4em auto 2em auto;
@@ -183,4 +189,8 @@ header {
     border-radius: 15px;
     backdrop-filter: blur(10px);
     padding: 1em;
+}
+
+#Oranking{
+    color: white;
 }

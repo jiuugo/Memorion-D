@@ -68,10 +68,6 @@ aceptar.addEventListener("click", () => {
 
     inicio.style.display = "none";
     juego.style.display = "block";
-
-    
-    const cartas = document.getElementsByClassName("carta");
-
     
     if(modo.value==="flash"){
         voltearTodasCartas();
@@ -338,6 +334,11 @@ function colocaTarjetas() {
         reverso.classList.add("cara", "reverso");
         const imgReverso = document.createElement("img");
         imgReverso.src = reversoCarta; // Ahora usamos la ruta limpia directamente
+
+        imgReverso.onload = () => {
+            carta.style.height = imgReverso.height + "px";
+        };
+
         reverso.appendChild(imgReverso);
 
         // Añadir frente y reverso a la carta

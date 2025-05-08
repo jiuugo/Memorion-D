@@ -125,8 +125,6 @@ header {
     image-rendering: optimizeSpeed; /* Edge antiguo */
 }
 .carta {
-    display: inline-block; /* Permite que los divs se ajusten al contenido */
-    width: auto; /* Elimina el tamaño fijo */
     height: 200px;
 
     perspective: 1000px;

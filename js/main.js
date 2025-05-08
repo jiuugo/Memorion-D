@@ -71,7 +71,9 @@ aceptar.addEventListener("click", () => {
     const cartas = document.getElementsByClassName("carta");
 
     
-
+    if(modo.value==="flash"){
+        voltearTodasCartas();
+    }
 
 
     activaVolteo();
@@ -107,6 +109,22 @@ function seleccionaAssetsTema(){
             body.style.backgroundImage = "url('../img/Fondos/FondoAnimales.webp')";
             break;
     }
+}
+
+function voltearTodasCartas() {
+    const cartas = document.getElementsByClassName("carta");
+
+    for (let i = 0; i < cartas.length; i++) {
+        cartas[i].classList.add("volteada");
+        resueltas[i] = 1;
+    }
+
+    setTimeout(() => {
+        for (let i = 0; i < cartas.length; i++) {
+            cartas[i].classList.remove("volteada");
+            resueltas[i] = 0;
+        }
+    }, 2000); // Espera 2 segundos antes de voltear las cartas de nuevo
 }
 
 function aleatorizaBanderas() {

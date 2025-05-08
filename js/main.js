@@ -35,6 +35,10 @@ let elegidas = new Array();
 
 aceptar.addEventListener("click", () => {
 
+    if (!tomaValoresFilas()) {
+        return;
+    }
+
     if (nombre.value === "") {
         alert("Introduce un nombre.");
         return;
@@ -53,9 +57,7 @@ aceptar.addEventListener("click", () => {
     actIntentos();
     poneNombre();
 
-    if (!tomaValoresFilas()) {
-        return;
-    }
+
 
     imgCartas = new Array(nFilas * nColumnas);
     resueltas = new Array(nFilas * nColumnas);
@@ -194,7 +196,6 @@ function comprobarPareja() {
 
         if (resueltas.reduce((acumulador, valorActual) => acumulador + valorActual, 0) === nFilas * nColumnas) {
             detenerCrono();
-            alert("Tu puntuación es: " + calculaPuntuacion());
             acabarPartida();
         }
 
@@ -306,8 +307,8 @@ function tomaValoresFilas() {
             nFilas = persFilas.value;
             nColumnas = persColumnas.value;
 
-            if ((nFilas * nColumnas) % 2 === 1) {
-                alert("El número total de tarjetas debe ser par. Cambia los valores personalizados.");
+            if (((nFilas * nColumnas) % 2 === 1)|| nFilas>= 7 || nColumnas >= 7|| nFilas <= 1 || nColumnas <= 1) {
+                alert("El número total de cartas debe ser par. Y el número de filas y columnas debe ser mayor que 1 y menor que 7.");
                 return false;
             }
             break;
@@ -448,17 +449,6 @@ function cambiarPantallaPuntuacion(){
 
 }
 
-const btnGanar = document.getElementById("btnGanar");
-
-btnGanar.addEventListener("click", () => {
-    //Toma intentos al azar entre 10 y 50
-    let intentos = Math.floor(Math.random() * (50 - 10 + 1)) + 10;
-    //Toma tiempo al azar entre 1 y 5 minutos
-    let tiempo = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
-
-    acabarPartida();
-
-})
 
 
 const btnVolver = document.getElementById("btnVolver");
@@ -474,6 +464,7 @@ function reiniciarJuego() {
     puntuacion.style.display = "none";
     juego.style.display = "none";
     // Reinicia el cronómetro y los intentos
+    body.style.backgroundImage = "url('../img/Fondos/tablero.jpg')";
     detenerCrono();
     reiniciarCrono();
     intentos = 0;

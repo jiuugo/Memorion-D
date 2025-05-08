@@ -70,7 +70,7 @@ header {
 
 #wrapper {
     margin: 2em auto;
-    width: 700px;
+    width: 900px;
     border-radius: 10px;
     color: black;
     padding: 10px;
@@ -92,7 +92,7 @@ header {
 }
 
 header {
-    width: 90%;
+    width: 70%;
 }
 
 #info {
@@ -117,12 +117,11 @@ header {
 
 
 .carta img {
-
-    image-rendering: pixelated;    /* Estándar moderno */
-    image-rendering: crisp-edges;  /* Compatibilidad */
-    image-rendering: -moz-crisp-edges;   /* Firefox antiguo */
-    image-rendering: -webkit-optimize-contrast; /* Safari antiguo */
-    image-rendering: optimizeSpeed; /* Edge antiguo */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
 }
 .carta {
     height: 200px;

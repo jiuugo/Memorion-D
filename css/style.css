@@ -116,15 +116,7 @@ header {
 }
 
 
-.voltea{
-    transform: rotateY(180deg);
-
-    transition: transform 1s;    
-}
 .carta img {
-    max-width: 100%; /* Las imágenes no excederán el tamaño del contenedor */
-    height: auto; /* Mantiene la proporción de las imágenes */
-    object-fit: contain;
 
     image-rendering: pixelated;    /* Estándar moderno */
     image-rendering: crisp-edges;  /* Compatibilidad */

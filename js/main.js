@@ -239,7 +239,7 @@ function comprobarPareja() {
         }
 
     } else {
-        // ❌ No coinciden, voltearlas de vuelta tras un pequeño delay
+        //No coinciden, voltearlas de vuelta tras un pequeño delay
  
 
         sonidoFallo.currentTime = 0;
@@ -251,7 +251,7 @@ function comprobarPareja() {
 
 
             elegidas = [];
-            bloqueo = false; // 🔓 Ahora sí dejamos que sigan clicando
+            bloqueo = false; //Ahora sí dejamos que sigan clicando
 
         }, 1000);
     }

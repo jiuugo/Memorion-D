@@ -199,13 +199,13 @@ header {
     border-spacing: 0;
 }
 
-#ranking td{
+#ranking td,  #listaHistorial td{
     padding: 10px;
     border-top: solid white 1px;
     border-bottom: solid white 1px;
 }
 
-.btnVolver, #btnJugar{
+.btnVolver, #btnJugar, #P456, #btnHistorial{
     color: white;
     margin: 1em auto;
     padding: 10px;
@@ -227,3 +227,37 @@ header {
     backdrop-filter: blur(10px);
     padding: 1em;
 }
+
+#Oranking{
+    color: white;
+}
+
+#historial {
+    display: none; /* Ya lo tienes, lo mantengo si sigue siendo necesario */
+    color: white;
+    font-size: 17px;
+    width: 20em;
+    margin: 1em auto 2em auto;
+    border: solid white 3px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    padding: 1em;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-family: cursive;
+}
+
+#historial ul {
+    list-style: none;
+    padding: 0;
+}
+
+#historial li {
+    padding: 10px;
+    border-top: solid white 1px;
+    border-bottom: solid white 1px;
+    font-family: cursive;
+}
+ #listaHistorial td{
+ text-align: center;
+ }

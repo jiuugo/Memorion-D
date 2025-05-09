@@ -373,10 +373,16 @@ function verRankingDesdePuntuacion(filas, columnas) {
     nColumnas = columnas;
     ordenaPuntuaciones();
     actualizarRankingPantalla();
+
+    // Oculta historial si estaba activo
+    document.getElementById("historial").style.display = "none";
+    document.getElementById("ranking").style.display = "table";
+
     puntuacion.style.display = "block";
     juego.style.display = "none";
     inicio.style.display = "none";
 }
+
 
 function verRankingDesdePuntuacionCustom() {
     const filas = parseInt(prompt("Introduce número de filas:"));
@@ -385,41 +391,67 @@ function verRankingDesdePuntuacionCustom() {
         alert("Tamaño inválido. Asegúrate de que el total de tarjetas sea par.");
         return;
     }
+
+    // Oculta historial si estaba activo
+    document.getElementById("historial").style.display = "none";
+    document.getElementById("ranking").style.display = "table";
+
     verRankingDesdePuntuacion(filas, columnas);
 }
 
+
 function verHistorial() {
-    const rankingContainer = document.getElementById("ranking"); // El contenedor donde se mostrará el historial y el ranking.
-    
-    // Limpiar el contenedor antes de mostrar el historial.
-    rankingContainer.innerHTML = '';
+    const historialDiv = document.getElementById("historial");
+    const listaHistorial = document.getElementById("listaHistorial");
+    const rankingTable = document.getElementById("ranking");
 
-    // Obtener historial de partidas desde el localStorage
-    let historialPartidas = JSON.parse(localStorage.getItem("historialPartidas")) || [];
+    // Oculta el ranking
+    rankingTable.style.display = "none";
+    historialDiv.style.display = "block";
 
-    // Si no hay historial de partidas, mostrar mensaje.
+    // Limpia la lista anterior
+    listaHistorial.innerHTML = '';
+
+    const historialPartidas = JSON.parse(localStorage.getItem("historialPartidas")) || [];
+
+    // Si no hay historial, mostramos un mensaje
     if (historialPartidas.length === 0) {
-        rankingContainer.innerHTML = "<p>No hay historial de partidas.</p>";
-        return;
+        const item = document.createElement("li");
+        item.textContent = "No hay historial de partidas.";
+        listaHistorial.appendChild(item);
+    } else {
+        // Crear la cabecera similar a la del ranking, pero sin la columna de "Tablero"
+        const cabecera = document.createElement("tr");
+        cabecera.innerHTML = "<th>Nombre</th><th>Puntuación</th><th>Parejas</th>";
+        listaHistorial.appendChild(cabecera);
+
+        // Mostrar las partidas del historial
+        historialPartidas.forEach(partida => {
+            const fila = document.createElement("tr");
+
+            const colNombre = document.createElement("td");
+            colNombre.textContent = partida.nombreJ;
+
+            const colPuntuacion = document.createElement("td");
+            colPuntuacion.textContent = partida.puntuacionJ;
+
+            const colParejas = document.createElement("td");
+            colParejas.textContent = partida.parejasJ;
+
+            fila.appendChild(colNombre);
+            fila.appendChild(colPuntuacion);
+            fila.appendChild(colParejas);
+
+            listaHistorial.appendChild(fila);
+        });
     }
 
-    // Crear una lista para mostrar las partidas.
-    let listaHistorial = document.createElement("ul");
-
-    // Recorrer el historial y agregar cada partida a la lista.
-    historialPartidas.forEach((partida, index) => {
-        const listaItem = document.createElement("li");
-        listaItem.innerHTML = `${partida.nombreJ} - ${partida.puntuacionJ} puntos - ${partida.fecha} (Tablero: ${partida.nFilas}x${partida.nColumnas})`;
-        listaHistorial.appendChild(listaItem);
-    });
-
-    // Agregar la lista al contenedor del ranking (se utiliza el mismo contenedor para ranking e historial).
-    rankingContainer.appendChild(listaHistorial);
-
-    // Si el historial es visible, ocultar la pantalla de puntuación.
-    puntuacion.style.display = "none";
-    rankingContainer.style.display = "block";
+    // Muestra pantalla de puntuación, oculta otras
+    puntuacion.style.display = "block";
     juego.style.display = "none";
     inicio.style.display = "none";
 }
+
+
+
 

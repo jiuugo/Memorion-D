@@ -22,7 +22,7 @@ const personalizado = document.getElementsByClassName("personalizado");
 const sonidoAcierto = new Audio("../audio/acierto.wav");
 const sonidoFallo = new Audio("../audio/fallo.mp3");
 
-let reversoCarta = "<img src=" + "../img/banderas/20.png" + ">";
+let reversoCarta = "<img src=" + "img/banderas/20.png" + ">";
 
 let background;
 let carpetaCartas = "<img src='../img/banderas/";
@@ -89,7 +89,7 @@ function seleccionaAssetsTema(){
 
     switch (tema.value) {
         case "banderas":
-            reversoCarta = "../img/banderas/20.png";
+            reversoCarta = "img/banderas/20.png";
             carpetaCartas = "../img/banderas/";
             tipoArchivoCartas = ".png";
             body.style.backgroundImage = "url('../img/Fondos/FondoBanderas.jpg')";

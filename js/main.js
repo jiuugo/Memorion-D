@@ -16,8 +16,8 @@ const intent = document.getElementById("intent");
 
 const personalizado = document.getElementsByClassName("personalizado");
 
-const sonidoAcierto = new Audio("../sound/acierto.wav");
-const sonidoFallo = new Audio("../sound/fallo.mp3");
+const sonidoAcierto = new Audio("../audio/acierto.wav");
+const sonidoFallo = new Audio("../audio/fallo.mp3");
 
 let reversoCarta = "<img src=" + "../img/banderas/20.png" + ">";
 

@@ -186,11 +186,11 @@ header {
     border-bottom: solid white 1px;
 }
 
-#btnVolver, #btnJugar{
+.btnVolver, #btnJugar{
     color: white;
     margin: 1em auto;
     padding: 10px;
-    background-color: black;
+    background-color: transparent;
     border-radius: 10px;
     border: solid white 2px;
     font-size: 20px;

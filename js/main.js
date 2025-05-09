@@ -11,6 +11,9 @@ const body = document.getElementsByTagName("body")[0];
 
 const aceptar = document.getElementById("btnJugar");
 
+const header = document.getElementsByTagName("header")[0];
+const info = document.getElementById("info");
+
 const hNombre = document.getElementById("hNombre");
 const intent = document.getElementById("intent");
 
@@ -90,24 +93,44 @@ function seleccionaAssetsTema(){
             carpetaCartas = "../img/banderas/";
             tipoArchivoCartas = ".png";
             body.style.backgroundImage = "url('../img/Fondos/FondoBanderas.jpg')";
+           
+            header.style.border = "3px solid #000";
+            info.style.color = "#000";
+            btnVolver[0].style.border = "2px solid #000";
+            btnVolver[0].style.color = "#000";
             break;
         case "Simpson":
             reversoCarta = "../img/Reversos/ReversoSimpson.webp";
             carpetaCartas = "../img/Simpson/";
             tipoArchivoCartas = ".webp";
             body.style.backgroundImage = "url('../img/Fondos/FondoSimpsons.webp')";
+            
+            header.style.border = "3px solid #000";
+            info.style.color = "#000";
+            btnVolver[0].style.border = "2px solid #000";
+            btnVolver[0].style.color = "#000";
             break;
         case "Coches":
             reversoCarta = "../img/Reversos/back720.png";
             carpetaCartas = "../img/coches/";
             tipoArchivoCartas = ".jpg";
             body.style.backgroundImage = "url('../img/Fondos/FondoCoches.jpg')";
+            
+            header.style.border = "3px solid white";
+            info.style.color = "white";
+            btnVolver[0].style.border = "2px solid white";
+            btnVolver[0].style.color = "white";
             break;
         case "Animales":
             reversoCarta = "../img/Reversos/backanimales.png";
             carpetaCartas = "../img/Animales/";
             tipoArchivoCartas = ".jpg";
             body.style.backgroundImage = "url('../img/Fondos/FondoAnimales.webp')";
+           
+            header.style.border = "3px solid white";
+            info.style.color = "white";
+            btnVolver[0].style.border = "2px solid white";
+            btnVolver[0].style.color = "white";
             break;
     }
 }
@@ -181,8 +204,6 @@ function manejarClickCarta(event) {
 function comprobarPareja() {
     const [carta1, carta2] = elegidas;
 
-    const frente1 = carta1.querySelector(".frente");
-    const frente2 = carta2.querySelector(".frente");
 
     if (imgCartas[carta1.id] === imgCartas[carta2.id]) {
 
@@ -196,8 +217,6 @@ function comprobarPareja() {
         carta1.querySelector("img").style.border = "5px solid green";
         carta2.querySelector("img").style.border = "5px solid green";
 
-        frente1.classList.add("acertada");
-        frente2.classList.add("acertada");
 
         elegidas = [];
         bloqueo = false; // 🔓 Desbloqueamos clicks aquí mismo
@@ -209,9 +228,7 @@ function comprobarPareja() {
 
     } else {
         // ❌ No coinciden, voltearlas de vuelta tras un pequeño delay
-
-        frente1.classList.add("fallo");
-        frente2.classList.add("fallo"); 
+ 
 
         sonidoFallo.currentTime = 0;
         sonidoFallo.play();
@@ -220,8 +237,6 @@ function comprobarPareja() {
             carta1.classList.remove("volteada");
             carta2.classList.remove("volteada");
 
-            frente1.classList.remove("fallo");
-            frente2.classList.remove("fallo");
 
             elegidas = [];
             bloqueo = false; // 🔓 Ahora sí dejamos que sigan clicando
@@ -437,7 +452,7 @@ const ranking = document.getElementById("ranking");
 function cambiarPantallaPuntuacion(){
 
     const mensajeFinal = document.getElementById("mensajeFinal");
-    mensajeFinal.textContent = "¡Enhorabuena " + nombre.value + " ! La puntuación con " + ((horas * 3600) + (minutos * 60) + segundos + (centesimas / 100)) + " segundos y " + intentos + " intentos, es: " + calculaPuntuacion() + " puntos.";
+    mensajeFinal.textContent = "¡Enhorabuena " + nombre.value + " ! La puntuación con " + ((horas * 3600) + (minutos * 60) + segundos + (centesimas / 100)) + " segundos y " + intentos + " intentos es: " + calculaPuntuacion() + " puntos.";
 
     juego.style.display = "none";
     puntuacion.style.display = "block";

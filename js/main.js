@@ -43,7 +43,7 @@ let rotated = false;
 
 aceptar.addEventListener("click", () => {
 
-    if((nombre.value === "Elias")||(nombre.value === "Elena")||(nombre.value === "Hugo")){
+    if ((nombre.value === "Elias") || (nombre.value === "Elena") || (nombre.value === "Hugo")) {
         rotated = !rotated;
         document.body.style.transform = rotated ? 'rotate(180deg)' : 'rotate(0deg)';
 
@@ -66,8 +66,10 @@ aceptar.addEventListener("click", () => {
         tema.value = temas[numRnd].value;
     }
 
-    if(temp.value==="false"){
+    if (temp.value === "false") {
         document.getElementById("crono").style.display = "none";
+        document.getElementById("btnCompartir").style.display = "none";
+        document.getElementById("btnCompartirTwitter").style.display = "none";
     }
 
     seleccionaAssetsTema();
@@ -86,8 +88,8 @@ aceptar.addEventListener("click", () => {
 
     inicio.style.display = "none";
     juego.style.display = "block";
-    
-    if(modo.value==="flash"){
+
+    if (modo.value === "flash") {
         voltearTodasCartas();
     }
 
@@ -97,7 +99,7 @@ aceptar.addEventListener("click", () => {
 
 })
 
-function seleccionaAssetsTema(){
+function seleccionaAssetsTema() {
 
     switch (tema.value) {
         case "banderas":
@@ -105,7 +107,7 @@ function seleccionaAssetsTema(){
             carpetaCartas = "img/banderas/";
             tipoArchivoCartas = ".png";
             body.style.backgroundImage = "url('img/Fondos/FondoBanderas.jpg')";
-           
+
             header.style.border = "3px solid #000";
             info.style.color = "#000";
             btnVolver[0].style.border = "2px solid #000";
@@ -116,7 +118,7 @@ function seleccionaAssetsTema(){
             carpetaCartas = "img/Simpson/";
             tipoArchivoCartas = ".webp";
             body.style.backgroundImage = "url('img/Fondos/FondoSimpsons.webp')";
-            
+
             header.style.border = "3px solid #000";
             info.style.color = "#000";
             btnVolver[0].style.border = "2px solid #000";
@@ -127,7 +129,7 @@ function seleccionaAssetsTema(){
             carpetaCartas = "img/coches/";
             tipoArchivoCartas = ".jpg";
             body.style.backgroundImage = "url('img/Fondos/FondoCoches.jpg')";
-            
+
             header.style.border = "3px solid white";
             info.style.color = "white";
             btnVolver[0].style.border = "2px solid white";
@@ -138,7 +140,7 @@ function seleccionaAssetsTema(){
             carpetaCartas = "img/Animales/";
             tipoArchivoCartas = ".jpg";
             body.style.backgroundImage = "url('img/Fondos/FondoAnimales.webp')";
-           
+
             header.style.border = "3px solid white";
             info.style.color = "white";
             btnVolver[0].style.border = "2px solid white";
@@ -180,8 +182,8 @@ function aleatorizaBanderas() {
     imgCartas = pares;
 }
 
-function activaVolteo(){
-    for(var i = 0; i <nFilas * nColumnas; i++){
+function activaVolteo() {
+    for (var i = 0; i < nFilas * nColumnas; i++) {
         const carta = document.getElementById(i);
 
         carta.addEventListener("click", manejarClickCarta);
@@ -207,7 +209,7 @@ function manejarClickCarta(event) {
     elegidas.push(carta);
 
     if (elegidas.length === 2) {
-        bloqueo = true; // 🔒 Bloqueamos mientras comprobamos
+        bloqueo = true; //Bloqueamos mientras comprobamos
         comprobarPareja();
     }
 }
@@ -222,7 +224,7 @@ function comprobarPareja() {
         sonidoAcierto.currentTime = 0;
         sonidoAcierto.play();
 
-        // ✅ ¡Correcto! Las dejamos volteadas
+        //Las dejamos volteadas
         resueltas[carta1.id] = 1;
         resueltas[carta2.id] = 1;
 
@@ -239,8 +241,8 @@ function comprobarPareja() {
         }
 
     } else {
-        // ❌ No coinciden, voltearlas de vuelta tras un pequeño delay
- 
+        //No coinciden, voltearlas de vuelta tras un pequeño delay
+
 
         sonidoFallo.currentTime = 0;
         sonidoFallo.play();
@@ -251,7 +253,7 @@ function comprobarPareja() {
 
 
             elegidas = [];
-            bloqueo = false; // 🔓 Ahora sí dejamos que sigan clicando
+            bloqueo = false; //Ahora sí dejamos que sigan clicando
 
         }, 1000);
     }
@@ -262,7 +264,7 @@ function comprobarPareja() {
 
 
 function guardaPuntuacion() {
-    if(temp.value==="false"){
+    if (temp.value === "false") {
         return;
 
     }
@@ -337,7 +339,7 @@ function tomaValoresFilas() {
             nFilas = persFilas.value;
             nColumnas = persColumnas.value;
 
-            if (((nFilas * nColumnas) % 2 === 1)|| nFilas>= 7 || nColumnas >= 7|| nFilas <= 1 || nColumnas <= 1) {
+            if (((nFilas * nColumnas) % 2 === 1) || nFilas >= 7 || nColumnas >= 7 || nFilas <= 1 || nColumnas <= 1) {
                 alert("El número total de cartas debe ser par. Y el número de filas y columnas debe ser mayor que 1 y menor que 7.");
                 return false;
             }
@@ -436,28 +438,36 @@ function reiniciarCrono() {
 }
 
 
-function calculaPuntuacion(){
+function calculaPuntuacion() {
     let tiempo = (horas * 3600) + (minutos * 60) + segundos + (centesimas / 100);
-    let puntuacion = Math.round(((nFilas * nColumnas) / (intentos * tiempo))*10000);
+    let puntuacion = Math.round(((nFilas * nColumnas) / (intentos * tiempo)) * 10000);
     return puntuacion;
 }
 
 
 const ranking = document.getElementById("ranking");
 
+const btnCompartir = document.getElementById("btnCompartir");
+const btnTwitter = document.getElementById("btnCompartirTwitter");
 
 function cambiarPantallaPuntuacion() {
     const mensajeFinal = document.getElementById("mensajeFinal");
-
-    if(temp.value==="false"){
+   
+    if (temp.value === "false") {
         mensajeFinal.textContent = "¡Has ganado! La puntuación de " + nombre.value + " no se guardará en el modo sin temporizador.";
 
-    }else{
+    } else {
         mensajeFinal.textContent = "¡Has ganado! La puntuación de " + nombre.value + " es: " + calculaPuntuacion() + " puntos.";
     }
 
     juego.style.display = "none";
     puntuacion.style.display = "block";
+
+    // Mostrar el botón de compartir
+
+    // Guardar el mensaje para compartir
+    btnCompartir.dataset.mensaje = mensaje;
+    btnTwitter.dataset.mensaje = mensaje;
 
     actualizarRankingPantalla();
 }
@@ -474,6 +484,8 @@ for (let btn of btnVolver) {
 
 function reiniciarJuego() {
     document.getElementById("crono").style.display = "table";
+    btnCompartir.style.display = "inline-block";
+    btnTwitter.style.display = "inline-block";
 
     inicio.style.display = "block";
     puntuacion.style.display = "none";
@@ -499,7 +511,7 @@ function reiniciarJuego() {
 }
 
 
-function acabarPartida(){
+function acabarPartida() {
     body.style.backgroundImage = "url('img/Fondos/tablero.jpg')";
     body.style.backgroundRepeat = "repeat";
     guardaPuntuacion();
@@ -634,3 +646,19 @@ function verHistorial() {
     juego.style.display = "none";
     inicio.style.display = "none";
 }
+
+document.getElementById("btnCompartir").addEventListener("click", function () {
+    const urlJuego = "https://jiuugo.github.io/Memorion-D/";
+    const mensaje = encodeURIComponent("¡He ganado en Memorión con una gran puntuación! 🧠🎉He obtenido " + calculaPuntuacion() + " puntos. ¿Puedes superarme?");
+    const facebookURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlJuego)}&quote=${mensaje}`;
+
+    window.open(facebookURL, "_blank", "width=600,height=400");
+});
+
+document.getElementById("btnCompartirTwitter").addEventListener("click", function () {
+    const urlJuego = "https://jiuugo.github.io/Memorion-D/";
+    const mensaje = "¡He ganado en Memorión con una gran puntuación! 🧠🎉He obtenido " + calculaPuntuacion() + " puntos. ¿Puedes superarme?";
+    const twitterURL = `https://twitter.com/intent/tweet?text=${encodeURIComponent(mensaje)}&url=${encodeURIComponent(urlJuego)}`;
+
+    window.open(twitterURL, "_blank", "width=600,height=400");
+});

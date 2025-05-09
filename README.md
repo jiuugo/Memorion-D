@@ -129,3 +129,27 @@ hemos trabajado en hacer 1 lista de todo lo que queremos arreglar o implementar.
 **Ideas de mejora futura:**
 
 Bloqueo de tablero, que la opción de desactivar cronómetro funcione, y añadir botones adicionales (Ver Historial, etc...)
+
+## Sesión 6: Mejoras Visuales, Pulido Final y Presentaciones
+
+**Resumen:**
+
+Hemos añadido sonido y efecto :hover a las cartas.
+Hemos implementado la función de publicar el resultado en Facebook o en X cuando se gana la partida.
+Hemos insertado un huevo de pascua que al meter nombre "Elias", "Hugo" o "Elena" se gire la pantalla de juego. 
+Hemos implementado la función de desactivar temporizador.
+Hemos implementado una función para que en pantalla final aparezca el ranking e historial.
+
+**Dificultades encontradas:**
+
+A la hora de compartir en Facebook que aparezcan los puntos.
+
+**Soluciones aplicadas:**
+
+
+
+**Fuentes consultadas:**
+https://developer.mozilla.org
+https://stackoverflow.com
+
+

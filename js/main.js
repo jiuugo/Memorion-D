@@ -19,13 +19,13 @@ const intent = document.getElementById("intent");
 
 const personalizado = document.getElementsByClassName("personalizado");
 
-const sonidoAcierto = new Audio("../audio/acierto.wav");
-const sonidoFallo = new Audio("../audio/fallo.mp3");
+const sonidoAcierto = new Audio("audio/acierto.wav");
+const sonidoFallo = new Audio("audio/fallo.mp3");
 
 let reversoCarta = "<img src=" + "img/banderas/20.png" + ">";
 
 let background;
-let carpetaCartas = "<img src='../img/banderas/";
+let carpetaCartas = "<img src='img/banderas/";
 let tipoArchivoCartas = ".png'>";
 
 
@@ -90,9 +90,9 @@ function seleccionaAssetsTema(){
     switch (tema.value) {
         case "banderas":
             reversoCarta = "img/banderas/20.png";
-            carpetaCartas = "../img/banderas/";
+            carpetaCartas = "img/banderas/";
             tipoArchivoCartas = ".png";
-            body.style.backgroundImage = "url('../img/Fondos/FondoBanderas.jpg')";
+            body.style.backgroundImage = "url('img/Fondos/FondoBanderas.jpg')";
            
             header.style.border = "3px solid #000";
             info.style.color = "#000";
@@ -100,10 +100,10 @@ function seleccionaAssetsTema(){
             btnVolver[0].style.color = "#000";
             break;
         case "Simpson":
-            reversoCarta = "../img/Reversos/ReversoSimpson.webp";
-            carpetaCartas = "../img/Simpson/";
+            reversoCarta = "img/Reversos/ReversoSimpson.webp";
+            carpetaCartas = "img/Simpson/";
             tipoArchivoCartas = ".webp";
-            body.style.backgroundImage = "url('../img/Fondos/FondoSimpsons.webp')";
+            body.style.backgroundImage = "url('img/Fondos/FondoSimpsons.webp')";
             
             header.style.border = "3px solid #000";
             info.style.color = "#000";
@@ -111,10 +111,10 @@ function seleccionaAssetsTema(){
             btnVolver[0].style.color = "#000";
             break;
         case "Coches":
-            reversoCarta = "../img/Reversos/back720.png";
-            carpetaCartas = "../img/coches/";
+            reversoCarta = "img/Reversos/back720.png";
+            carpetaCartas = "img/coches/";
             tipoArchivoCartas = ".jpg";
-            body.style.backgroundImage = "url('../img/Fondos/FondoCoches.jpg')";
+            body.style.backgroundImage = "url('img/Fondos/FondoCoches.jpg')";
             
             header.style.border = "3px solid white";
             info.style.color = "white";
@@ -122,10 +122,10 @@ function seleccionaAssetsTema(){
             btnVolver[0].style.color = "white";
             break;
         case "Animales":
-            reversoCarta = "../img/Reversos/backanimales.png";
-            carpetaCartas = "../img/Animales/";
+            reversoCarta = "img/Reversos/backanimales.png";
+            carpetaCartas = "img/Animales/";
             tipoArchivoCartas = ".jpg";
-            body.style.backgroundImage = "url('../img/Fondos/FondoAnimales.webp')";
+            body.style.backgroundImage = "url('img/Fondos/FondoAnimales.webp')";
            
             header.style.border = "3px solid white";
             info.style.color = "white";
@@ -454,7 +454,7 @@ function reiniciarJuego() {
     puntuacion.style.display = "none";
     juego.style.display = "none";
     // Reinicia el cronómetro y los intentos
-    body.style.backgroundImage = "url('../img/Fondos/tablero.jpg')";
+    body.style.backgroundImage = "url('img/Fondos/tablero.jpg')";
     detenerCrono();
     reiniciarCrono();
     intentos = 0;
@@ -475,7 +475,7 @@ function reiniciarJuego() {
 
 
 function acabarPartida(){
-    body.style.backgroundImage = "url('../img/Fondos/tablero.jpg')";
+    body.style.backgroundImage = "url('img/Fondos/tablero.jpg')";
     body.style.backgroundRepeat = "repeat";
     guardaPuntuacion();
     ordenaPuntuaciones();

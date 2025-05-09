@@ -68,6 +68,8 @@ aceptar.addEventListener("click", () => {
 
     if (temp.value === "false") {
         document.getElementById("crono").style.display = "none";
+        document.getElementById("btnCompartir").style.display = "none";
+        document.getElementById("btnCompartirTwitter").style.display = "none";
     }
 
     seleccionaAssetsTema();
@@ -445,12 +447,12 @@ function calculaPuntuacion() {
 
 const ranking = document.getElementById("ranking");
 
+const btnCompartir = document.getElementById("btnCompartir");
+const btnTwitter = document.getElementById("btnCompartirTwitter");
 
 function cambiarPantallaPuntuacion() {
     const mensajeFinal = document.getElementById("mensajeFinal");
-    const btnCompartir = document.getElementById("btnCompartir");
-    const btnTwitter = document.getElementById("btnCompartirTwitter");
-
+   
     if (temp.value === "false") {
         mensajeFinal.textContent = "¡Has ganado! La puntuación de " + nombre.value + " no se guardará en el modo sin temporizador.";
 
@@ -462,8 +464,6 @@ function cambiarPantallaPuntuacion() {
     puntuacion.style.display = "block";
 
     // Mostrar el botón de compartir
-    btnCompartir.style.display = "inline-block";
-    btnTwitter.style.display = "inline-block";
 
     // Guardar el mensaje para compartir
     btnCompartir.dataset.mensaje = mensaje;
@@ -484,6 +484,8 @@ for (let btn of btnVolver) {
 
 function reiniciarJuego() {
     document.getElementById("crono").style.display = "table";
+    btnCompartir.style.display = "inline-block";
+    btnTwitter.style.display = "inline-block";
 
     inicio.style.display = "block";
     puntuacion.style.display = "none";
@@ -646,16 +648,16 @@ function verHistorial() {
 }
 
 document.getElementById("btnCompartir").addEventListener("click", function () {
-    const urlJuego = "https://jiuugo.github.io/Memorion-D/"; // Cambia esta URL por la de tu juego en GitHub Pages o similar
-    const mensaje = encodeURIComponent("¡He ganado en Memorión! ¿Puedes superarme?");
+    const urlJuego = "https://jiuugo.github.io/Memorion-D/";
+    const mensaje = encodeURIComponent("¡He ganado en Memorión con una gran puntuación! 🧠🎉He obtenido " + calculaPuntuacion() + " puntos. ¿Puedes superarme?");
     const facebookURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlJuego)}&quote=${mensaje}`;
 
     window.open(facebookURL, "_blank", "width=600,height=400");
 });
 
 document.getElementById("btnCompartirTwitter").addEventListener("click", function () {
-    const urlJuego = "https://jiuugo.github.io/Memorion-D/"; // 🔁 Pon aquí la URL real de tu juego
-    const mensaje = "¡He ganado en Memorión con una gran puntuación! 🧠🎉 ¿Puedes superarme?";
+    const urlJuego = "https://jiuugo.github.io/Memorion-D/";
+    const mensaje = "¡He ganado en Memorión con una gran puntuación! 🧠🎉He obtenido " + calculaPuntuacion() + " puntos. ¿Puedes superarme?";
     const twitterURL = `https://twitter.com/intent/tweet?text=${encodeURIComponent(mensaje)}&url=${encodeURIComponent(urlJuego)}`;
 
     window.open(twitterURL, "_blank", "width=600,height=400");

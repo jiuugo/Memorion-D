@@ -68,10 +68,6 @@ aceptar.addEventListener("click", () => {
 
     inicio.style.display = "none";
     juego.style.display = "block";
-
-    
-    const cartas = document.getElementsByClassName("carta");
-
     
     if(modo.value==="flash"){
         voltearTodasCartas();
@@ -338,6 +334,11 @@ function colocaTarjetas() {
         reverso.classList.add("cara", "reverso");
         const imgReverso = document.createElement("img");
         imgReverso.src = reversoCarta; // Ahora usamos la ruta limpia directamente
+
+        imgReverso.onload = () => {
+            carta.style.height = imgReverso.height + "px";
+        };
+
         reverso.appendChild(imgReverso);
 
         // Añadir frente y reverso a la carta
@@ -403,7 +404,7 @@ function reiniciarCrono() {
 
 function calculaPuntuacion(){
     let tiempo = (horas * 3600) + (minutos * 60) + segundos + (centesimas / 100);
-    let puntuacion = Math.round(((nFilas * nColumnas) / (intentos * tiempo))*100000);
+    let puntuacion = Math.round(((nFilas * nColumnas) / (intentos * tiempo))*10000);
     return puntuacion;
 }
 
@@ -414,7 +415,7 @@ const ranking = document.getElementById("ranking");
 function cambiarPantallaPuntuacion(){
 
     const mensajeFinal = document.getElementById("mensajeFinal");
-    mensajeFinal.textContent = "¡Has ganado! La puntuación de "+ nombre.value +" es: " + calculaPuntuacion() + " puntos.";
+    mensajeFinal.textContent = "¡Enhorabuena " + nombre.value + " ! La puntuación con " + ((horas * 3600) + (minutos * 60) + segundos + (centesimas / 100)) + " segundos y " + intentos + " intentos, es: " + calculaPuntuacion() + " puntos.";
 
     juego.style.display = "none";
     puntuacion.style.display = "block";
@@ -451,13 +452,13 @@ function cambiarPantallaPuntuacion(){
 
 
 
-const btnVolver = document.getElementById("btnVolver");
+const btnVolver = document.getElementsByClassName("btnVolver");
 
-btnVolver.addEventListener("click", () => {
-    reiniciarJuego()
-
-
-});
+for (let btn of btnVolver) {
+    btn.addEventListener("click", () => {
+        reiniciarJuego();
+    });
+}
 
 function reiniciarJuego() {
     inicio.style.display = "block";

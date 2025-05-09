@@ -1,6 +1,4 @@
-html{
-    height: 100%;
-}
+
 
 body {
     text-align: center;
@@ -9,6 +7,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-attachment: fixed;
     color: white;
 }
 
@@ -70,15 +69,14 @@ header {
 
 #wrapper {
     margin: 2em auto;
-    width: 700px;
+    width: 900px;
     border-radius: 10px;
     color: black;
     padding: 10px;
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-row-gap: 1em;
-    grid-column-gap: 1em;
+    gap: 25px;
 }
 
 #wrapper img {
@@ -92,7 +90,7 @@ header {
 }
 
 header {
-    width: 90%;
+    width: 70%;
 }
 
 #info {
@@ -116,25 +114,16 @@ header {
 }
 
 
-.voltea{
-    transform: rotateY(180deg);
-
-    transition: transform 1s;    
-}
 .carta img {
-    max-width: 100%; /* Las imágenes no excederán el tamaño del contenedor */
-    height: auto; /* Mantiene la proporción de las imágenes */
-    object-fit: contain;
-
-    image-rendering: pixelated;    /* Estándar moderno */
-    image-rendering: crisp-edges;  /* Compatibilidad */
-    image-rendering: -moz-crisp-edges;   /* Firefox antiguo */
-    image-rendering: -webkit-optimize-contrast; /* Safari antiguo */
-    image-rendering: optimizeSpeed; /* Edge antiguo */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
+    background-color: pink;
+    border-radius: 5px;
 }
 .carta {
-    display: inline-block; /* Permite que los divs se ajusten al contenido */
-    width: auto; /* Elimina el tamaño fijo */
     height: 200px;
 
     perspective: 1000px;
@@ -227,11 +216,11 @@ header {
     border-bottom: solid white 1px;
 }
 
-#btnVolver, #btnJugar{
+.btnVolver, #btnJugar{
     color: white;
     margin: 1em auto;
     padding: 10px;
-    background-color: black;
+    background-color: transparent;
     border-radius: 10px;
     border: solid white 2px;
     font-size: 20px;

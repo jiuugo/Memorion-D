@@ -58,6 +58,10 @@ aceptar.addEventListener("click", () => {
         tema.value = temas[numRnd].value;
     }
 
+    if(temp.value==="false"){
+        document.getElementById("crono").style.display = "none";
+    }
+
     seleccionaAssetsTema();
 
     actIntentos();
@@ -450,6 +454,7 @@ for (let btn of btnVolver) {
 }
 
 function reiniciarJuego() {
+    document.getElementById("crono").style.display = "table";
     inicio.style.display = "block";
     puntuacion.style.display = "none";
     juego.style.display = "none";

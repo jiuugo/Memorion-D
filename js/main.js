@@ -39,7 +39,15 @@ let bloqueo = false;
 
 let elegidas = new Array();
 
+let rotated = false;
+
 aceptar.addEventListener("click", () => {
+
+    if((nombre.value === "Elias")||(nombre.value === "Elena")||(nombre.value === "Hugo")){
+        rotated = !rotated;
+        document.body.style.transform = rotated ? 'rotate(180deg)' : 'rotate(0deg)';
+
+    }
 
     if (!tomaValoresFilas()) {
         return;
@@ -56,6 +64,10 @@ aceptar.addEventListener("click", () => {
         let numRnd = Math.floor(4 * Math.random());
 
         tema.value = temas[numRnd].value;
+    }
+
+    if(temp.value==="false"){
+        document.getElementById("crono").style.display = "none";
     }
 
     seleccionaAssetsTema();
@@ -250,6 +262,11 @@ function comprobarPareja() {
 
 
 function guardaPuntuacion() {
+    if(temp.value==="false"){
+        return;
+
+    }
+
     const puntuacion = calculaPuntuacion();
     let jugador = {
         nombreJ: nombre.value,
@@ -431,7 +448,13 @@ const ranking = document.getElementById("ranking");
 
 function cambiarPantallaPuntuacion() {
     const mensajeFinal = document.getElementById("mensajeFinal");
-    mensajeFinal.textContent = "¡Has ganado! La puntuación de " + nombre.value + " es: " + calculaPuntuacion() + " puntos.";
+
+    if(temp.value==="false"){
+        mensajeFinal.textContent = "¡Has ganado! La puntuación de " + nombre.value + " no se guardará en el modo sin temporizador.";
+
+    }else{
+        mensajeFinal.textContent = "¡Has ganado! La puntuación de " + nombre.value + " es: " + calculaPuntuacion() + " puntos.";
+    }
 
     juego.style.display = "none";
     puntuacion.style.display = "block";
@@ -450,6 +473,8 @@ for (let btn of btnVolver) {
 }
 
 function reiniciarJuego() {
+    document.getElementById("crono").style.display = "table";
+
     inicio.style.display = "block";
     puntuacion.style.display = "none";
     juego.style.display = "none";

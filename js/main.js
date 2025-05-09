@@ -204,8 +204,6 @@ function manejarClickCarta(event) {
 function comprobarPareja() {
     const [carta1, carta2] = elegidas;
 
-    const frente1 = carta1.querySelector(".frente");
-    const frente2 = carta2.querySelector(".frente");
 
     if (imgCartas[carta1.id] === imgCartas[carta2.id]) {
 
@@ -219,8 +217,6 @@ function comprobarPareja() {
         carta1.querySelector("img").style.border = "5px solid green";
         carta2.querySelector("img").style.border = "5px solid green";
 
-        frente1.classList.add("acertada");
-        frente2.classList.add("acertada");
 
         elegidas = [];
         bloqueo = false; // 🔓 Desbloqueamos clicks aquí mismo
@@ -232,9 +228,7 @@ function comprobarPareja() {
 
     } else {
         // ❌ No coinciden, voltearlas de vuelta tras un pequeño delay
-
-        frente1.classList.add("fallo");
-        frente2.classList.add("fallo"); 
+ 
 
         sonidoFallo.currentTime = 0;
         sonidoFallo.play();
@@ -243,8 +237,6 @@ function comprobarPareja() {
             carta1.classList.remove("volteada");
             carta2.classList.remove("volteada");
 
-            frente1.classList.remove("fallo");
-            frente2.classList.remove("fallo");
 
             elegidas = [];
             bloqueo = false; // 🔓 Ahora sí dejamos que sigan clicando

@@ -205,7 +205,7 @@ header {
     border-bottom: solid white 1px;
 }
 
-.btnVolver, #btnJugar, #P456, #btnHistorial{
+.btnVolver, #btnJugar, #P456, #btnHistorial, #btnCompartir, #btnCompartirTwitter{
     color: white;
     margin: 1em auto;
     padding: 10px;

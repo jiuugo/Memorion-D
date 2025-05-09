@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/Icon.png" type="image/x-icon">
+    <title>Memorión - D</title>
+</head>
+
+<body>
+    <div id="inicio">
+        <img src="img/logo.png" alt="Memorión" id="logo">
+        <table id="config">
+            <tr>
+                <th colspan="2" id="tituloConf">Configuración</th>
+            </tr>
+            <tr class="filas">
+                <th>Nombre:</th>
+                <td><input type="text" id="nombre"></td>
+            </tr>
+            <tr class="filas">
+                <th>Modo de juego:</th>
+                <td>
+                    <select id="modo">
+                        <option selected default value="normal">Normal</option>
+                        <option value="flash">Flash</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="filas">
+                <th>Nivel de juego:</th>
+                <td>
+                    <select id="nivel">
+                        <option selected default value="facil">Tablero 4x4</option>
+                        <option value="medio">Tablero 5x6</option>
+                        <option value="dificil">Tablero 6x6</option>
+                        <option value="personalizado">Personalizado</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="personalizado">
+                <td>Filas:</td>
+                <td><input type="number" min="1" max="6" id="persFilas"></td>
+            </tr>
+            <tr class="personalizado">
+                <td>Columnas:</td>
+                <td><input type="number" min="1" max="6" id="persColumnas"></td>
+            </tr>
+            <tr class="filas">
+                <th>Tema:</th>
+                <td>
+                    <select id="tema">
+                        <option selected default value="banderas" class="temas">Banderas</option>
+                        <option value="Simpson" class="temas">Simpson</option>
+                        <option value="Coches" class="temas">Coches</ption>
+                        <option value="Animales" class="temas">Animales</option>
+                        <option value="aleatorio">Aleatorio</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="filas">
+                <th>Temporizador:</th>
+                <td>
+                    <select id="temp">
+                        <option selected default value="true">Activado</option>
+                        <option value="false">Desactivado</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <button id="btnJugar">Jugar</button>
+    </div>
+
+    <div id="juego">
+
+        <header>
+            <table id="info">
+                <tr>
+                    <td>
+                        <h1 id="hNombre">Jugador: </h1>
+                    </td>
+                    <td>
+                        <h1 id="intent">Intentos:</h1>
+                    </td>
+                    <td>
+                        <table id="crono">
+                            <tr>
+                                <th colspan="4">Tiempo</th>
+                            </tr>
+                            <tr>
+                                <td class="reloj" id="horas">00</td>
+                                <td class="reloj" id="minutos">:00</td>
+                                <td class="reloj" id="segundos">:00</td>
+                                <td class="reloj" id="centesimas">:00</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </header>
+
+        <div id="wrapper">
+        </div>
+
+        <button class="btnVolver">Volver</button>
+    </div>
+    <div id="puntuacion">
+        <h1 id="mensajeFinal">Elena, has conseguido: puntos</h1>
+        <div id="opcionesRanking">
+            <h3 id="Oranking">Ver otros rankings:</h3>
+            <button onclick="verRankingDesdePuntuacion(4, 4)" id="P456">4x4</button>
+            <button onclick="verRankingDesdePuntuacion(6, 5)" id="P456">6x5</button>
+            <button onclick="verRankingDesdePuntuacion(6, 6)" id="P456">6x6</button>
+            <button onclick="verRankingDesdePuntuacionCustom()" id="P456">Personalizado</button>
+            <button onclick="verHistorial()" id="btnHistorial">Historial</button>
+        </div>
+
+
+        <table id="ranking">
+            <thead>
+                <tr>
+                    <th colspan="4" id="tituloRanking">Ranking</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rellenado dinámicamente -->
+            </tbody>
+        </table>
+
+        <div id="historial" style="display: none;">
+            <h2>Historial de partidas</h2>
+            <ul id="listaHistorial"></ul>
+        </div>
+
+        <button class="btnVolver">Volver</button>
+    </div>
+    <script async src="/js/main.js"></script>
+</body>
+
+</html>

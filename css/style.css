@@ -1,15 +1,27 @@
-html{
-    height: 100%;
-}
+
 
 body {
     text-align: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background-image: url("/img/Fondos/tablero.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-attachment: fixed;
     color: white;
+}
+
+*{
+    font-family: "Arial", sans-serif;
+}
+
+select, input {
+    background-color: darkgreen;
+    color: white;
+    border: solid white 2px;
+    border-radius: 5px;
+    padding: 5px;
+    
+    
 }
 
 #config {
@@ -70,19 +82,20 @@ header {
 
 #wrapper {
     margin: 2em auto;
-    width: 700px;
+    width: 900px;
     border-radius: 10px;
     color: black;
     padding: 10px;
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-row-gap: 1em;
-    grid-column-gap: 10px;
+    gap: 25px;
 }
 
 #wrapper img {
     width: 100%;
+    box-shadow: 4px 8px 10px black;
+    border: solid 4px white;
 }
 
 #wrapper div {
@@ -90,7 +103,7 @@ header {
 }
 
 header {
-    width: 90%;
+    width: 70%;
 }
 
 #info {
@@ -113,26 +126,56 @@ header {
     padding: 0;
 }
 
-#wrapper div {
-    background-color: white;
-}
 
-.voltea{
-    transform: rotateY(180deg);
-
-    transition: transform 1s;    
-}
 .carta img {
-    image-rendering: pixelated;    /* Estándar moderno */
-    image-rendering: crisp-edges;  /* Compatibilidad */
-    image-rendering: -moz-crisp-edges;   /* Firefox antiguo */
-    image-rendering: -webkit-optimize-contrast; /* Safari antiguo */
-    image-rendering: optimizeSpeed; /* Edge antiguo */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
+    background-color: pink;
+    border-radius: 5px;
 }
-.carta{
-    padding: 5px;
-    box-shadow: 4px 8px 10px black;
+.carta {
+    height: 200px;
+
+    perspective: 1000px;
+    cursor: pointer;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
 }
+
+  .carta .cara {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+  }
+
+  .carta .frente {
+    transform: rotateY(180deg);
+  }
+  
+  .carta .reverso {
+    transform: rotateY(0deg);
+  }
+  
+  .carta.volteada .frente {
+    transform: rotateY(0deg);
+  }
+  
+  .carta.volteada .reverso {
+    transform: rotateY(-180deg);
+  }
+ 
+.carta:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s;
+}
+
+
 
 #logo{
     margin: 7em auto 2em auto; 
@@ -156,13 +199,13 @@ header {
     border-spacing: 0;
 }
 
-#ranking td{
+#ranking td,  #listaHistorial td{
     padding: 10px;
     border-top: solid white 1px;
     border-bottom: solid white 1px;
 }
 
-#btnVolver, #btnJugar{
+.btnVolver, #btnJugar, #P456, #btnHistorial{
     color: white;
     margin: 1em auto;
     padding: 10px;
@@ -184,3 +227,37 @@ header {
     backdrop-filter: blur(10px);
     padding: 1em;
 }
+
+#Oranking{
+    color: white;
+}
+
+#historial {
+    display: none; /* Ya lo tienes, lo mantengo si sigue siendo necesario */
+    color: white;
+    font-size: 17px;
+    width: 20em;
+    margin: 1em auto 2em auto;
+    border: solid white 3px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    padding: 1em;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-family: cursive;
+}
+
+#historial ul {
+    list-style: none;
+    padding: 0;
+}
+
+#historial li {
+    padding: 10px;
+    border-top: solid white 1px;
+    border-bottom: solid white 1px;
+    font-family: cursive;
+}
+ #listaHistorial td{
+ text-align: center;
+ }

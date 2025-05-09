@@ -254,57 +254,37 @@ function guardaPuntuacion() {
     let jugador = {
         nombreJ: nombre.value,
         puntuacionJ: puntuacion,
-        parejasJ: nFilas*nColumnas/2,
+        parejasJ: nFilas * nColumnas / 2,
+        fecha: new Date().toLocaleString(),  // Fecha y hora de la partida
+        nFilas: nFilas,
+        nColumnas: nColumnas
     };
 
-    localStorage.setItem("jugador" + contadorJugadores, JSON.stringify(jugador));
-    contadorJugadores++;
+    // Guardar en el ranking por nivel
+    let nivelKey = `${nFilas}x${nColumnas}`;
+    let rankingPorNivel = JSON.parse(localStorage.getItem("ranking_" + nivelKey)) || [];
+    rankingPorNivel.push(jugador);
+    localStorage.setItem("ranking_" + nivelKey, JSON.stringify(rankingPorNivel));
+
+    // Guardar también en el historial general
+    let historialPartidas = JSON.parse(localStorage.getItem("historialPartidas")) || [];
+    historialPartidas.push(jugador);
+    localStorage.setItem("historialPartidas", JSON.stringify(historialPartidas));
 }
 
 let puntuaciones = [];
 
-function ordenaPuntuaciones(){
-    let contador = 0;
-    puntuaciones = [];
-    let jugador = null;
-
-    do{
-        jugador = JSON.parse(localStorage.getItem("jugador" + contador));
-        if(jugador){
-            puntuaciones.push(jugador);
-        }else{
-            break;
-        }
-        contador++;
-    }while(jugador);
-
-    //Devuelve el array de puntuaciones ordenando de menor a mayor por número de parejas y luego por puntuación.
-    puntuaciones.sort((a, b) => {
-        if (a.parejasJ === b.parejasJ) {
-            return a.puntuacionJ - b.puntuacionJ;
-        }
-        return a.parejasJ - b.parejasJ;
-    });
-
+function ordenaPuntuaciones() {
+    let nivelKey = `${nFilas}x${nColumnas}`;
+    puntuaciones = JSON.parse(localStorage.getItem("ranking_" + nivelKey)) || [];
+    puntuaciones.sort((a, b) => b.puntuacionJ - a.puntuacionJ);
 }
 
 nivel.addEventListener("click", () => {
-    if (nivel.value === "personalizado") {
-
-        for (const tr of personalizado) {
-            tr.style.display = "table-row"
-        }
-
+    for (const tr of personalizado) {
+        tr.style.display = nivel.value === "personalizado" ? "table-row" : "none";
     }
-
-    if (nivel.value !== "personalizado") {
-
-        for (const tr of personalizado) {
-            tr.style.display = "none"
-        }
-
-    }
-})
+});
 
 function actIntentos() {
     intent.textContent = "Intentos: " + intentos;
@@ -449,42 +429,14 @@ function calculaPuntuacion(){
 const ranking = document.getElementById("ranking");
 
 
-function cambiarPantallaPuntuacion(){
-
+function cambiarPantallaPuntuacion() {
     const mensajeFinal = document.getElementById("mensajeFinal");
-    mensajeFinal.textContent = "¡Enhorabuena " + nombre.value + " ! La puntuación con " + ((horas * 3600) + (minutos * 60) + segundos + (centesimas / 100)) + " segundos y " + intentos + " intentos es: " + calculaPuntuacion() + " puntos.";
+    mensajeFinal.textContent = "¡Has ganado! La puntuación de " + nombre.value + " es: " + calculaPuntuacion() + " puntos.";
 
     juego.style.display = "none";
     puntuacion.style.display = "block";
 
-    ranking.innerHTML = '';
-    const cabecera = document.createElement("tr");
-    cabecera.innerHTML = "<th>Nombre</th><th>Puntuación</th><th>Parejas</th>";
-    ranking.appendChild(cabecera);
-
-    for(var i = 0; i < puntuaciones.length;i++){
-        let jugador = JSON.parse(localStorage.getItem("jugador" + i));
-
-
-        const fila = document.createElement("tr");
-
-        const colNombre = document.createElement("td");
-        const colPuntuacion = document.createElement("td");
-        const colParejas = document.createElement("td");
-
-        colNombre.innerHTML = jugador.nombreJ;
-        colPuntuacion.innerHTML = jugador.puntuacionJ;
-        colParejas.innerHTML = jugador.parejasJ;
-        
-        fila.appendChild(colNombre);
-        fila.appendChild(colPuntuacion);
-        fila.appendChild(colParejas);
-
-        ranking.appendChild(fila);
-
-    }
-
-
+    actualizarRankingPantalla();
 }
 
 
@@ -528,4 +480,132 @@ function acabarPartida(){
     guardaPuntuacion();
     ordenaPuntuaciones();
     cambiarPantallaPuntuacion()
+}
+
+function actualizarRankingPantalla() {
+    const tituloRanking = document.getElementById("tituloRanking");
+    tituloRanking.textContent = `Ranking ${nFilas}x${nColumnas}`;
+
+    // Elimina todas las filas excepto la primera (que contiene el título)
+    const filas = ranking.querySelectorAll("tr:not(:first-child)");
+    filas.forEach(fila => fila.remove());
+
+    // Agrega encabezados de columna
+    const cabecera = document.createElement("tr");
+    cabecera.innerHTML = "<th>Posición</th><th>Nombre</th><th>Puntuación</th><th>Parejas</th>";
+    ranking.appendChild(cabecera);
+
+    // Agrega cada fila del ranking
+    for (let i = 0; i < puntuaciones.length; i++) {
+        let jugador = puntuaciones[i];
+        const fila = document.createElement("tr");
+
+        const colPosicion = document.createElement("td");
+        const colNombre = document.createElement("td");
+        const colPuntuacion = document.createElement("td");
+        const colParejas = document.createElement("td");
+
+        switch (i) {
+            case 0: colPosicion.innerHTML = "🥇"; break;
+            case 1: colPosicion.innerHTML = "🥈"; break;
+            case 2: colPosicion.innerHTML = "🥉"; break;
+            default: colPosicion.innerHTML = i + 1;
+        }
+
+        colNombre.textContent = jugador.nombreJ;
+        colPuntuacion.textContent = jugador.puntuacionJ;
+        colParejas.textContent = jugador.parejasJ;
+
+        fila.appendChild(colPosicion);
+        fila.appendChild(colNombre);
+        fila.appendChild(colPuntuacion);
+        fila.appendChild(colParejas);
+
+        ranking.appendChild(fila);
+    }
+}
+
+
+function verRankingDesdePuntuacion(filas, columnas) {
+    nFilas = filas;
+    nColumnas = columnas;
+    ordenaPuntuaciones();
+    actualizarRankingPantalla();
+
+    // Oculta historial si estaba activo
+    document.getElementById("historial").style.display = "none";
+    document.getElementById("ranking").style.display = "table";
+
+    puntuacion.style.display = "block";
+    juego.style.display = "none";
+    inicio.style.display = "none";
+}
+
+
+function verRankingDesdePuntuacionCustom() {
+    const filas = parseInt(prompt("Introduce número de filas:"));
+    const columnas = parseInt(prompt("Introduce número de columnas:"));
+    if (!filas || !columnas || (filas * columnas) % 2 !== 0) {
+        alert("Tamaño inválido. Asegúrate de que el total de tarjetas sea par.");
+        return;
+    }
+
+    // Oculta historial si estaba activo
+    document.getElementById("historial").style.display = "none";
+    document.getElementById("ranking").style.display = "table";
+
+    verRankingDesdePuntuacion(filas, columnas);
+}
+
+
+function verHistorial() {
+    const historialDiv = document.getElementById("historial");
+    const listaHistorial = document.getElementById("listaHistorial");
+    const rankingTable = document.getElementById("ranking");
+
+    // Oculta el ranking
+    rankingTable.style.display = "none";
+    historialDiv.style.display = "block";
+
+    // Limpia la lista anterior
+    listaHistorial.innerHTML = '';
+
+    const historialPartidas = JSON.parse(localStorage.getItem("historialPartidas")) || [];
+
+    // Si no hay historial, mostramos un mensaje
+    if (historialPartidas.length === 0) {
+        const item = document.createElement("li");
+        item.textContent = "No hay historial de partidas.";
+        listaHistorial.appendChild(item);
+    } else {
+        // Crear la cabecera similar a la del ranking, pero sin la columna de "Tablero"
+        const cabecera = document.createElement("tr");
+        cabecera.innerHTML = "<th>Nombre</th><th>Puntuación</th><th>Parejas</th>";
+        listaHistorial.appendChild(cabecera);
+
+        // Mostrar las partidas del historial
+        historialPartidas.forEach(partida => {
+            const fila = document.createElement("tr");
+
+            const colNombre = document.createElement("td");
+            colNombre.textContent = partida.nombreJ;
+
+            const colPuntuacion = document.createElement("td");
+            colPuntuacion.textContent = partida.puntuacionJ;
+
+            const colParejas = document.createElement("td");
+            colParejas.textContent = partida.parejasJ;
+
+            fila.appendChild(colNombre);
+            fila.appendChild(colPuntuacion);
+            fila.appendChild(colParejas);
+
+            listaHistorial.appendChild(fila);
+        });
+    }
+
+    // Muestra pantalla de puntuación, oculta otras
+    puntuacion.style.display = "block";
+    juego.style.display = "none";
+    inicio.style.display = "none";
 }

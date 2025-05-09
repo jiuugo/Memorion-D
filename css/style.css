@@ -205,7 +205,7 @@ header {
     border-bottom: solid white 1px;
 }
 
-.btnVolver, #btnJugar, #P456, #btnHistorial, #btnCompartir, #btnCompartirTwitter{
+.btnVolver, #btnJugar, #P456, #btnHistorial{
     color: white;
     margin: 1em auto;
     padding: 10px;
@@ -261,3 +261,28 @@ header {
  #listaHistorial td{
  text-align: center;
  }
+
+ #btnCompartir{
+  color: white;
+    margin: 1em auto;
+    padding: 10px;
+    background-color: transparent;
+    border-radius: 10px;
+    border: solid white 2px;
+    font-size: 20px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    background-color: rgb(81, 106, 253);
+}
+#btnCompartirTwitter{
+     color: white;
+    margin: 1em auto;
+    padding: 10px;
+    background-color: transparent;
+    border-radius: 10px;
+    border: solid white 2px;
+    font-size: 20px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    background-color: black;
+}
